@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faimly-T | Multi-Agent DDD Clean Architecture Success Case</title>
+  <meta name="description"
+    content="Detailed architectural breakdown of Faimly-T's production-ready Domain-Driven Design framework pre-wired for Claude AI multi-agent software engineering.">
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet (Relative path from subfolder) -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-microchip"></i></span>
+        <span class="logo-text">Faimly-T</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#cases">Success Cases</a></li>
+        <li><a href="../index.html#contact" class="btn btn-secondary">Get in Touch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header class="case-header">
+    <div class="container">
+      <a href="../index.html#cases" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Cases</a>
+      <div class="case-meta">
+        <span><i class="fa-solid fa-network-wired"></i> Enterprise Architecture</span>
+        <span><i class="fa-solid fa-calendar-days"></i> Active Deployment</span>
+      </div>
+      <h1 style="font-size: 3rem; line-height: 1.15;"><span class="gradient-text">Multi-Agent Clean DDD Architecture</span></h1>
+    </div>
+  </header>
+
+  <!-- Grid Details -->
+  <main class="container">
+    <div class="case-grid">
+      <article class="case-content">
+        <h3>The Challenge</h3>
+        <p>Traditional software engineering templates are often built with standard N-tier layers that fail to isolate core business rules from third-party libraries and framework requirements. When AI agents or developer assistants are introduced to these codebases, they struggle with high cognitive load, frequently introduce architectural drift, and break transactional boundaries by leaking persistence concerns into the UI layer.</p>
+
+        <h3>The Solution</h3>
+        <p>Faimly-T engineered a production-ready Domain-Driven Design (DDD) architecture in C# (.NET 8) pre-wired for collaborative Claude AI multi-agent workflows. By placing the Domain Model at the absolute center, core logic remains pure and isolated. The framework exposes a unified CQRS pipeline using MediatR and is split into clean, modular clients (Next.js 14 and .NET MAUI desktop app) that communicate with the API backend.</p>
+
+        <h3>Core Architectural Layers</h3>
+        <p>The solution is strictly structured across four isolated layers to enable clear separation of concerns, making it highly readable for both human engineers and AI agents:</p>
+        <ul>
+          <li><strong>Domain Layer:</strong> Enforces business invariants. Contains Entities, Aggregates, Value Objects, Domain Events, and Repository interfaces. It has zero external dependencies.</li>
+          <li><strong>Application Layer:</strong> Implements use cases via CQRS (Commands and Queries), request validators, and transaction middleware pipelines. Depends only on the Domain.</li>
+          <li><strong>Infrastructure Layer:</strong> Implements repositories using EF Core (PostgreSQL), schedules integration events via MassTransit (RabbitMQ), handles Redis caching, and maps external API services.</li>
+          <li><strong>API & Bounded Context Layer:</strong> Exposes ASP.NET Core endpoints, handles middleware configurations, Swagger documentation, and token-based authentication.</li>
+        </ul>
+
+        <h3>Pre-Wired AI Sub-Agent Definitions</h3>
+        <p>A crucial innovation is the embedding of specialized sub-agent instruction files within the <code>.claude/agents/</code> directory. When AI assistants onboard, they read their matching role guidelines, reducing context window overhead and increasing code correctness:</p>
+        <ul>
+          <li><strong>domain-modeler:</strong> Focuses on aggregates, domain invariants, value objects, and ubiquitous language glossary preservation.</li>
+          <li><strong>backend-architect:</strong> Designs C# API controllers, schedules CQRS handlers, and writes EF Core mapping configurations.</li>
+          <li><strong>frontend-developer:</strong> Implements React 19 / Next.js features, builds UI dashboards, and consumes API layers.</li>
+          <li><strong>test-engineer:</strong> Automatically writes unit tests, CQRS integration specs, and playwright end-to-end regression workflows.</li>
+        </ul>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Tech Stack Info -->
+        <div class="sidebar-box">
+          <h4>Technology Stack</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">C# / .NET 8</span>
+            <span class="tech-tag">Next.js 14</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">RabbitMQ</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">MassTransit</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Docker / K8s</span>
+          </div>
+        </div>
+
+        <!-- Metric Details -->
+        <div class="sidebar-box">
+          <h4>Performance Metrics</h4>
+          <div class="metrics-list">
+            <div class="metric-item">
+              <span class="metric-val">10x</span>
+              <span class="metric-lbl">Faster AI Code Generation Velocity</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-val">Zero</span>
+              <span class="metric-lbl">Persistence Leakage in Domain Core</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-val">6</span>
+              <span class="metric-lbl">Role-Defined Claude Agent Presets</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Faimly-T Software. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Faimly-T" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

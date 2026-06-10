@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faimly-T | RaaD AI Agent Onboarding Platform Success Case</title>
+  <meta name="description"
+    content="Detailed breakdown of Faimly-T's RaaD AI Agent Onboarding Platform, using Semantic Kernel to parse codebases and orchestrate agent runtimes.">
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet (Relative path from subfolder) -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-microchip"></i></span>
+        <span class="logo-text">Faimly-T</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#cases">Success Cases</a></li>
+        <li><a href="../index.html#contact" class="btn btn-secondary">Get in Touch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header class="case-header">
+    <div class="container">
+      <a href="../index.html#cases" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Cases</a>
+      <div class="case-meta">
+        <span><i class="fa-solid fa-user-gear"></i> Cognitive Integrations</span>
+        <span><i class="fa-solid fa-calendar-days"></i> Active Deployment</span>
+      </div>
+      <h1 style="font-size: 3rem; line-height: 1.15;"><span class="gradient-text">RaaD AI Agent Onboarding Platform</span></h1>
+    </div>
+  </header>
+
+  <!-- Grid Details -->
+  <main class="container">
+    <div class="case-grid">
+      <article class="case-content">
+        <h3>The Challenge</h3>
+        <p>Onboarding new developers or autonomous AI agents onto legacy or complex enterprise repositories is a major bottleneck. Agents must read through hundreds of files to understand architecture, coding standards, and domain models, leading to high token consumption, slow response times, and frequent semantic misunderstandings that stall automation pipelines.</p>
+
+        <h3>The Solution</h3>
+        <p>Faimly-T designed and implemented the RaaD AI Onboarding Platform. The platform builds a semantic index of local workspace projects and orchestrates runtime task execution using Microsoft's Semantic Kernel framework. It acts as an intelligent proxy that bridges code analysis and agent execution, delivering structural metadata, DDD compliance checks, and target instructions directly to agent memory.</p>
+
+        <h3>Core Capabilities</h3>
+        <p>The RaaD onboarding architecture uses a multi-stage cognitive pipeline to translate workspace layouts into structured agent guidelines:</p>
+        <ul>
+          <li><strong>Automated Workspace Indexer:</strong> Scans the directory structure, identifies dependencies, locates C# solution files, and aggregates configuration parameters (.env files).</li>
+          <li><strong>Semantic Kernel Runtime:</strong> Orchestrates agent skills, memory, and planner capabilities inside C#. It acts as the central execution engine that converts user instructions into plan tasks.</li>
+          <li><strong>Agent Onboarding Core:</strong> Prepares role-specific setups for agents, aligning their internal prompt constraints with local architectures (like DDD boundaries).</li>
+          <li><strong>DDD Compliance Validator:</strong> Analyzes codebase modifications in real-time, warning the agent if domain logic is leaking or naming conventions are broken.</li>
+        </ul>
+
+        <h3>Integration & Workspace Parsing</h3>
+        <p>By parsing active directory contexts, the onboarding platform maps solutions directly. When an agent is spun up, it immediately knows what APIs are exposed, where data persistence is wired (e.g. EF Core or Cosmos DB configurations), and what external message brokers are configured (e.g. RabbitMQ queues), avoiding cold starts and guess-work code generation.</p>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Tech Stack Info -->
+        <div class="sidebar-box">
+          <h4>Technology Stack</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">C# / .NET Core</span>
+            <span class="tech-tag">Semantic Kernel</span>
+            <span class="tech-tag">OpenAI / Azure OpenAI</span>
+            <span class="tech-tag">Workspace Indexer</span>
+            <span class="tech-tag">Git Integration</span>
+          </div>
+        </div>
+
+        <!-- Metric Details -->
+        <div class="sidebar-box">
+          <h4>Performance Metrics</h4>
+          <div class="metrics-list">
+            <div class="metric-item">
+              <span class="metric-val">85%</span>
+              <span class="metric-lbl">Reduction in Agent Onboarding Time</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-val">100%</span>
+              <span class="metric-lbl">Semantic Kernel Native Execution</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-val">1-Click</span>
+              <span class="metric-lbl">Environment Configuration Scaffolding</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Faimly-T Software. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Faimly-T" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

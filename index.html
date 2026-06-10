@@ -11,9 +11,7 @@
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -34,7 +32,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#news">News</a></li>
+        <li><a href="#cases">Success Cases</a></li>
         <li><a href="#contact" class="btn btn-secondary">Get in Touch</a></li>
       </ul>
       <button class="mobile-nav-toggle" aria-label="Toggle navigation">
@@ -55,7 +53,7 @@
           today.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Book Free AI Consultation</a>
-          <a href="#services" class="btn btn-outline">Explore Capabilities</a>
+          <a href="#cases" class="btn btn-outline">Explore Success Cases</a>
         </div>
       </div>
       <div class="hero-visual-area">
@@ -69,68 +67,75 @@
     </div>
   </header>
 
+  <!-- About / Overview -->
+  <section id="about" class="services-section" style="background: linear-gradient(180deg, var(--color-bg-dark) 0%, rgba(13, 20, 35, 0.2) 100%);">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Who We Are</span>
+        <h2 class="section-title">Architecting the Agentic Future</h2>
+        <p class="section-subtitle">We are a specialized software consultancy engineering high-performance systems integrated with large language models, custom agents, and production-ready architectures.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Services / Value Proposition -->
   <section id="services" class="services-section">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Elevate Your Enterprise</h2>
-        <p class="section-subtitle">Tailored technology solutions engineered for efficiency, intelligence, and scale.
-        </p>
+        <p class="section-subtitle">Tailored technology solutions engineered for efficiency, intelligence, and scale.</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
           <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
           <h3>AI Strategic Advisory</h3>
-          <p>Not sure where AI fits in your workflow? We audit your operations and identify high-value opportunities to
-            integrate generative AI models and automation.</p>
+          <p>We audit your existing workflows and identify high-value opportunities to integrate generative AI models, custom LLM agents, and semantic capabilities to boost developer and operator efficiency.</p>
         </div>
         <div class="service-card">
           <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
           <h3>Custom Software Engineering</h3>
-          <p>High-performance web applications, API integrations, and robust database layers designed to scale alongside
-            your client base.</p>
+          <p>High-performance web applications, specialized API integrations, and robust database layers designed from the ground up to support modern agentic capabilities.</p>
         </div>
         <div class="service-card">
           <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>Machine Learning & Pipelines</h3>
-          <p>Unlock value from your unstructured data. We design predictive analytics models, custom NLP agents, and
-            fine-tune large language models.</p>
+          <h3>Multi-Agent Workflows</h3>
+          <p>Unlock automation at scale. We design and build coordinated multi-agent pipelines, custom Semantic Kernel plugins, and Clean DDD infrastructures that support asynchronous AI workflows.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- News Section -->
-  <section id="news" class="news-section">
+  <!-- Success Cases Section -->
+  <section id="cases" class="news-section" style="background: linear-gradient(180deg, var(--color-bg-dark) 0%, rgba(13, 20, 35, 0.25) 100%);">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Latest Insights</h2>
-        <p class="section-subtitle">Read about our latest launches, company updates, and perspectives on the AI
-          landscape.</p>
+        <span class="badge">Featured Deployments</span>
+        <h2 class="section-title">Success Cases</h2>
+        <p class="section-subtitle">Explore real-world architectures and platforms we have built to empower AI-driven productivity.</p>
       </div>
-
-      <div class="news-grid">
-        <!-- News Article 1 -->
+      
+      <div class="news-grid" style="justify-content: center; max-width: 900px; margin: 0 auto;">
+        <!-- Success Case 1: DDD Multi-Agents -->
         <article class="news-card">
-          <div class="news-image-placeholder"><i class="fa-solid fa-rocket"></i></div>
+          <div class="news-image-placeholder"><i class="fa-solid fa-network-wired"></i></div>
           <div class="news-content">
-            <span class="news-tag">Announcement</span>
-            <span class="news-date">June 2026</span>
-            <h3>Introducing Faimly-T AI Advisory Services</h3>
-            <p>We are officially launching custom consulting workshops designed to help mid-market enterprises adopt
-              agentic workflows safely.</p>
+            <span class="news-tag">Architecture</span>
+            <span class="news-date">C# DDD Template</span>
+            <h3>Multi-Agent DDD Clean Architecture</h3>
+            <p>A production-ready C# enterprise architecture pre-wired for Claude AI multi-agent developer workflows, using PostgreSQL, MassTransit + RabbitMQ, Redis, and a Next.js frontend.</p>
+            <a href="./success-cases/ddd-agents.html" class="news-link">View Case Details <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
 
-        <!-- News Article 2 -->
+        <!-- Success Case 2: RaaD AI Onboarding -->
         <article class="news-card">
-          <div class="news-image-placeholder"><i class="fa-solid fa-gears"></i></div>
+          <div class="news-image-placeholder"><i class="fa-solid fa-user-gear"></i></div>
           <div class="news-content">
-            <span class="news-tag">Tech Stack</span>
-            <span class="news-date">May 2026</span>
-            <h3>How to Migrate Off Legacy Platforms</h3>
-            <p>Why switching from Wix/WordPress to lightweight static architectures hosted on GitHub can save thousands
-              of dollars and maximize performance.</p>
+            <span class="news-tag">Integrations</span>
+            <span class="news-date">RaaD Onboarding</span>
+            <h3>RaaD AI Agent Onboarding Platform</h3>
+            <p>An intelligent agent onboarding and cognitive pipeline builder utilizing Microsoft's Semantic Kernel to parse codebase context and orchestrate runtime task execution.</p>
+            <a href="./success-cases/raad-agents.html" class="news-link">View Case Details <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
       </div>
@@ -143,8 +148,7 @@
       <div class="contact-wrapper">
         <div class="contact-info">
           <h2>Let's Engineer <br><span class="gradient-text">Your AI Strategy</span></h2>
-          <p>Fill out the form to request a free, 30-minute consultancy review. We will identify immediate pathways to
-            introduce intelligent efficiency into your business.</p>
+          <p>Fill out the form to request a free, 30-minute consultancy review. We will identify immediate pathways to introduce intelligent efficiency into your business.</p>
           <div class="contact-details">
             <div class="contact-item">
               <span class="item-icon"><i class="fa-solid fa-envelope"></i></span>
@@ -157,12 +161,12 @@
               <span class="item-icon"><i class="fa-solid fa-globe"></i></span>
               <div>
                 <h4>GitHub Space</h4>
-                <p>github.com/maxfrodriguez</p>
+                <p>github.com/Faimly-T</p>
               </div>
             </div>
           </div>
         </div>
-
+        
         <div class="form-container">
           <!-- Web3Forms Lead Intake Form -->
           <form action="https://api.web3forms.com/submit" method="POST" id="lead-form">
@@ -188,19 +192,17 @@
 
             <div class="form-group">
               <label for="lead-message">Tell us about your needs</label>
-              <textarea id="lead-message" name="message" rows="4" required
-                placeholder="How can AI help your workflow?"></textarea>
+              <textarea id="lead-message" name="message" rows="4" required placeholder="How can AI help your workflow?"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Send Consultation Request</button>
-
             <p class="form-note">By submitting, you agree to receive follow-up emails regarding your request.</p>
           </form>
 
           <div id="form-feedback" class="form-feedback">
             <i class="fa-solid fa-circle-check"></i>
             <h3>Message Sent!</h3>
-            <p>Thank you. We will reach back to schedule your free consultation session shortly.</p>
+            <p>Thank you for reaching out. We will review your project details and contact you shortly.</p>
           </div>
         </div>
       </div>
@@ -212,8 +214,7 @@
     <div class="container footer-content">
       <p>&copy; 2026 Faimly-T Software. All rights reserved.</p>
       <div class="footer-links">
-        <a href="https://github.com/maxfrodriguez" target="_blank" aria-label="GitHub"><i
-            class="fa-brands fa-github"></i></a>
+        <a href="https://github.com/Faimly-T" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
       </div>
     </div>
   </footer>
