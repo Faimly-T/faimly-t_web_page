@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
    FAIMLY-T WEB PAGE - INTERACTIONS & FORM SUBMISSION SCRIPT
-   Handles the custom form submissions dynamically for a seamless user feel
+   Handles mobile menu toggling, interactive FAQ accordions, and custom form submission
    -------------------------------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,6 +19,48 @@ document.addEventListener("DOMContentLoaded", () => {
         icon.classList.toggle("fa-xmark");
       }
     });
+  }
+
+  // FAQ Accordion interaction
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector(".faq-trigger");
+    const panel = item.querySelector(".faq-panel");
+
+    if (trigger && panel) {
+      trigger.addEventListener("click", () => {
+        const isActive = item.classList.contains("active");
+
+        // Close all other panels to maintain single-open accordion behavior
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove("active");
+            const otherPanel = otherItem.querySelector(".faq-panel");
+            if (otherPanel) {
+              otherPanel.style.maxHeight = "0px";
+            }
+          }
+        });
+
+        // Toggle the clicked panel
+        if (isActive) {
+          item.classList.remove("active");
+          panel.style.maxHeight = "0px";
+        } else {
+          item.classList.add("active");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+  });
+
+  // Automatically expand the default active FAQ item on load
+  const defaultActive = document.querySelector(".faq-item.active");
+  if (defaultActive) {
+    const panel = defaultActive.querySelector(".faq-panel");
+    if (panel) {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
   }
 
   // Intercept the form submission to provide a beautiful custom success window

@@ -24,17 +24,22 @@
 
   <!-- Navigation -->
   <nav class="navbar">
-    <div class="nav-container">
+    <div class="container nav-container">
       <a href="#" class="logo">
         <span class="logo-icon"><i class="fa-solid fa-microchip"></i></span>
         <span class="logo-text">Faimly-T</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#cases">Success Cases</a></li>
-        <li><a href="#contact" class="btn btn-secondary">Get in Touch</a></li>
-      </ul>
+      <div class="nav-links-wrapper">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#cases">Success Cases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
       <button class="mobile-nav-toggle" aria-label="Toggle navigation">
         <i class="fa-solid fa-bars"></i>
       </button>
@@ -42,33 +47,87 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-bg-glow"></div>
+  <header class="hero grid-dots-bg">
     <div class="container hero-content">
       <div class="hero-text-area">
         <div class="badge">Next-Gen Intelligence</div>
         <h1>We Build Software Powered By <span class="gradient-text">Artificial Intelligence</span></h1>
-        <p class="hero-subtitle">At Faimly-T, we translate complex AI capabilities into elegant, high-impact business
-          solutions. From strategic consultancy to custom software systems, we bring the future to your operations
-          today.</p>
+        <p class="hero-subtitle">At Faimly-T, we translate complex AI capabilities into elegant, high-impact business solutions. From strategic consultancy to custom software systems, we bring the future to your operations today.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Book Free AI Consultation</a>
           <a href="#cases" class="btn btn-outline">Explore Success Cases</a>
         </div>
       </div>
+      
+      <!-- Interactive Chat Dashboard Mockup -->
       <div class="hero-visual-area">
-        <div class="sphere-wrapper">
-          <div class="ai-sphere"></div>
-          <div class="orbit-ring orbit-1"></div>
-          <div class="orbit-ring orbit-2"></div>
-          <div class="orbit-ring orbit-3"></div>
+        <div class="dashboard-mockup">
+          <!-- Mockup Sidebar -->
+          <div class="mock-sidebar">
+            <div class="mock-profile">
+              <div class="mock-avatar">FT</div>
+              <div class="mock-profile-name">Faimly-T AI</div>
+            </div>
+            <ul class="mock-menu">
+              <li class="mock-menu-item active">
+                <i class="fa-solid fa-comments"></i> Chat Assistant
+              </li>
+              <li class="mock-menu-item">
+                <i class="fa-solid fa-brain"></i> advisory-bot
+              </li>
+              <li class="mock-menu-item">
+                <i class="fa-solid fa-code"></i> ddd-architect
+              </li>
+              <li class="mock-menu-item">
+                <i class="fa-solid fa-circle-play"></i> test-runner
+              </li>
+            </ul>
+            <div class="mock-pinned">
+              <div class="mock-pinned-title">Active Pipelines</div>
+              <ul class="mock-pinned-items">
+                <li class="mock-pinned-item"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 0.4rem;"></i> DDD Bounded Core</li>
+                <li class="mock-pinned-item"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 0.4rem;"></i> RaaD Semantic Index</li>
+                <li class="mock-pinned-item"><i class="fa-solid fa-spinner" style="color: var(--color-primary); margin-right: 0.4rem;"></i> agent-orchestrator</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Mockup Chat Area -->
+          <div class="mock-chat-area">
+            <div class="mock-chat-header">
+              <div class="mock-chat-title">Chat <span style="font-weight: normal; color: var(--color-text-light); font-size: 0.85rem;">/ agent-orchestrator</span></div>
+              <div class="mock-chat-actions">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                <i class="fa-solid fa-gear"></i>
+                <i class="fa-solid fa-circle-up"></i>
+              </div>
+            </div>
+            <div class="mock-chat-messages">
+              <div class="mock-bubble mock-bubble-user">
+                How can we orchestrate custom Semantic Kernel agents inside a C# Clean DDD project?
+              </div>
+              <div class="mock-bubble mock-bubble-ai">
+                We design coordinated multi-agent pipelines utilizing Semantic Kernel to parse context and execute tasks. Our DDD templates decouple layers via CQRS:
+                <pre>FaimlyT.Domain (pure invariants)
+FaimlyT.Application (CQRS handlers)
+FaimlyT.Infrastructure (EF Core, MassTransit)</pre>
+                Would you like to review our production-ready RabbitMQ integration script?
+              </div>
+            </div>
+            <div class="mock-chat-input-area">
+              <div class="mock-chat-input">Type your message or ask about AI consulting...</div>
+              <div class="mock-chat-send">
+                <i class="fa-solid fa-arrow-up"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
   <!-- About / Overview -->
-  <section id="about" class="services-section" style="background: linear-gradient(180deg, var(--color-bg-dark) 0%, rgba(13, 20, 35, 0.2) 100%);">
+  <section id="about" class="services-section">
     <div class="container">
       <div class="section-header">
         <span class="badge">Who We Are</span>
@@ -78,35 +137,65 @@
     </div>
   </section>
 
-  <!-- Services / Value Proposition -->
-  <section id="services" class="services-section">
+  <!-- Services / Value Proposition (Made to fit your workflow style) -->
+  <section id="services" class="services-section" style="background-color: var(--color-bg-alt);">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Elevate Your Enterprise</h2>
         <p class="section-subtitle">Tailored technology solutions engineered for efficiency, intelligence, and scale.</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-          <h3>AI Strategic Advisory</h3>
-          <p>We audit your existing workflows and identify high-value opportunities to integrate generative AI models, custom LLM agents, and semantic capabilities to boost developer and operator efficiency.</p>
+      
+      <div class="services-wrapper">
+        <!-- Left Side: Interactive Metrics Mockup -->
+        <div class="services-visual-mockup">
+          <div class="metrics-widget">
+            <div class="metrics-widget-header">
+              <span class="metrics-widget-title"><i class="fa-solid fa-chart-simple" style="color: var(--color-primary); margin-right: 0.5rem;"></i> System Efficiency</span>
+              <span class="metrics-widget-val">94.2%</span>
+            </div>
+            <div class="progress-arc-container">
+              <div class="progress-bar-placeholder">
+                <div class="progress-bar-fill"></div>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 0.5rem; font-weight: 500;">AI Optimization Capacity (Active)</span>
+            </div>
+            <div style="border-top: 1px solid var(--color-border); padding-top: 1rem; margin-top: 1rem; display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span>Code Velocity: <strong>+10x</strong></span>
+              <span>Domain Leaks: <strong>0.00%</strong></span>
+            </div>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
-          <h3>Custom Software Engineering</h3>
-          <p>High-performance web applications, specialized API integrations, and robust database layers designed from the ground up to support modern agentic capabilities.</p>
-        </div>
-        <div class="service-card">
-          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>Multi-Agent Workflows</h3>
-          <p>Unlock automation at scale. We design and build coordinated multi-agent pipelines, custom Semantic Kernel plugins, and Clean DDD infrastructures that support asynchronous AI workflows.</p>
+        
+        <!-- Right Side: 2x2 Services Grid -->
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>AI Strategic Advisory</h3>
+            <p>We audit your existing workflows and identify high-value opportunities to integrate generative AI models, custom LLM agents, and semantic capabilities to boost developer and operator efficiency.</p>
+          </div>
+          <div class="service-card">
+            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>Custom Software Engineering</h3>
+            <p>High-performance web applications, specialized API integrations, and robust database layers designed from the ground up to support modern agentic capabilities.</p>
+          </div>
+          <div class="service-card">
+            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Multi-Agent Workflows</h3>
+            <p>Unlock automation at scale. We design and build coordinated multi-agent pipelines, custom Semantic Kernel plugins, and Clean DDD infrastructures that support asynchronous AI workflows.</p>
+          </div>
+          <div class="service-card" style="background-color: var(--color-primary-glow); border-color: rgba(52, 109, 219, 0.2);">
+            <div class="card-icon" style="background-color: #ffffff; color: var(--color-primary);"><i class="fa-solid fa-comments"></i></div>
+            <h3>Start Your Review</h3>
+            <p>Ready to introduce intelligent efficiency into your business workflows? Click here to schedule your free consultation with our team.</p>
+            <a href="#contact" class="news-link" style="margin-top: 1rem; font-size: 0.85rem;">Request Consultation <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Success Cases Section -->
-  <section id="cases" class="news-section" style="background: linear-gradient(180deg, var(--color-bg-dark) 0%, rgba(13, 20, 35, 0.25) 100%);">
+  <!-- Success Cases Section (Resource Center Style) -->
+  <section id="cases" class="news-section">
     <div class="container">
       <div class="section-header">
         <span class="badge">Featured Deployments</span>
@@ -114,13 +203,17 @@
         <p class="section-subtitle">Explore real-world architectures and platforms we have built to empower AI-driven productivity.</p>
       </div>
       
-      <div class="news-grid" style="justify-content: center; max-width: 900px; margin: 0 auto;">
+      <div class="news-grid">
         <!-- Success Case 1: DDD Multi-Agents -->
         <article class="news-card">
-          <div class="news-image-placeholder"><i class="fa-solid fa-network-wired"></i></div>
+          <div class="news-image-placeholder">
+            <i class="fa-solid fa-network-wired"></i>
+          </div>
           <div class="news-content">
-            <span class="news-tag">Architecture</span>
-            <span class="news-date">C# DDD Template</span>
+            <div class="news-tags-row">
+              <span class="news-tag">Architecture</span>
+              <span class="news-date">C# DDD Template</span>
+            </div>
             <h3>Multi-Agent DDD Clean Architecture</h3>
             <p>A production-ready C# enterprise architecture pre-wired for Claude AI multi-agent developer workflows, using PostgreSQL, MassTransit + RabbitMQ, Redis, and a Next.js frontend.</p>
             <a href="./success-cases/ddd-agents.html" class="news-link">View Case Details <i class="fa-solid fa-arrow-right"></i></a>
@@ -129,15 +222,90 @@
 
         <!-- Success Case 2: RaaD AI Onboarding -->
         <article class="news-card">
-          <div class="news-image-placeholder"><i class="fa-solid fa-user-gear"></i></div>
+          <div class="news-image-placeholder">
+            <i class="fa-solid fa-user-gear"></i>
+          </div>
           <div class="news-content">
-            <span class="news-tag">Integrations</span>
-            <span class="news-date">RaaD Onboarding</span>
+            <div class="news-tags-row">
+              <span class="news-tag">Integrations</span>
+              <span class="news-date">RaaD Onboarding</span>
+            </div>
             <h3>RaaD AI Agent Onboarding Platform</h3>
             <p>An intelligent agent onboarding and cognitive pipeline builder utilizing Microsoft's Semantic Kernel to parse codebase context and orchestrate runtime task execution.</p>
             <a href="./success-cases/raad-agents.html" class="news-link">View Case Details <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (New collapsible accordions section) -->
+  <section id="faq" class="faq-section" style="background-color: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Learn More</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Find answers to common questions about Faimly-T's custom software development, AI integrations, and consultancy model.</p>
+      </div>
+      
+      <div class="faq-wrapper">
+        <!-- Left Side Info Card -->
+        <div class="faq-info-card">
+          <h3>Still have a question?</h3>
+          <p>If you have any further questions or need technical clarification regarding our architectures, our engineering team is ready to help.</p>
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+        
+        <!-- Right Side Accordion List -->
+        <div class="faq-list">
+          <div class="faq-item active">
+            <button class="faq-trigger" type="button" aria-expanded="true">
+              <h4>What is an AI Strategic Advisory?</h4>
+              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-content">
+                We audit your existing business operations and software workflows to identify high-impact areas where Large Language Models, custom agent pipelines, and semantic systems can eliminate manual overhead, boost developer throughput, and decrease operational defects.
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <h4>How do multi-agent workflows automate complex software tasks?</h4>
+              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-content">
+                By designing coordinated pipelines utilizing orchestrators like Microsoft's Semantic Kernel or custom bus handlers, we decouple complex tasks into specialized sub-agent queries (e.g. database schema mapping, aggregate modeling, code generation, and test creation) that execute asynchronously and report back with validated code blocks.
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <h4>Why do you build AI platforms on Domain-Driven Design (DDD)?</h4>
+              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-content">
+                Domain-Driven Design places the core business logic in a pure, isolated Domain Layer with zero external dependencies. This decoupling makes it incredibly easy for AI agents to write code. Since aggregates and business invariants are strictly structured, sub-agents achieve 10x higher code-generation accuracy compared to standard legacy structures.
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <h4>How does the free 30-minute consultation work?</h4>
+              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-content">
+                Once you fill out the contact form below, we schedule a direct Google Meet call to discuss your current software workflows. We provide initial strategic guidance, identify low-hanging AI integration points, and formulate a high-level roadmap tailored for your business needs.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -170,9 +338,9 @@
         <div class="form-container">
           <!-- Web3Forms Lead Intake Form -->
           <form action="https://api.web3forms.com/submit" method="POST" id="lead-form">
-            <!-- IMPORTANT: Set access key from https://web3forms.com/ -->
+            <!-- Set access key from web3forms -->
             <input type="hidden" name="access_key" value="e5d2d63e-eddf-4b93-8126-cbf1e52ccb01">
-            <input type="hidden" name="subject" value="New AI Consultancy Lead - Faimly-T">
+            <input type="hidden" name="subject" value="New AI Lead Submission - Faimly-T">
             <input type="checkbox" name="botcheck" id="botcheck" style="display: none;">
 
             <div class="form-group">
@@ -211,10 +379,75 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container footer-content">
-      <p>&copy; 2026 Faimly-T Software. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="https://github.com/Faimly-T" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <div class="container">
+      <!-- Newsletter Banner Card -->
+      <div class="newsletter-card">
+        <div class="newsletter-text">
+          <h3>Join our newsletter</h3>
+          <p>Discover the features and architectural templates that will transform your engineering teams.</p>
+        </div>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address">
+          <button class="newsletter-btn" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+      
+      <!-- Multi-column links -->
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-microchip"></i></span>
+            <span class="logo-text">Faimly-T</span>
+          </a>
+          <p>Empower your engineering teams with our comprehensive multi-agent templates and DDD software architectures.</p>
+          <div class="footer-dropdown">
+            ENG <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/Faimly-T" target="_blank" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-nav-col">
+          <h4>Resources</h4>
+          <ul class="footer-nav-links">
+            <li><a href="./success-cases/ddd-agents.html">DDD C# Template</a></li>
+            <li><a href="./success-cases/raad-agents.html">Semantic Kernel Code</a></li>
+            <li><a href="https://github.com/Faimly-T" target="_blank">GitHub Space</a></li>
+            <li><a href="#">Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-nav-col">
+          <h4>Services</h4>
+          <ul class="footer-nav-links">
+            <li><a href="#services">AI Strategic Advisory</a></li>
+            <li><a href="#services">Custom Engineering</a></li>
+            <li><a href="#services">Multi-Agent Workflows</a></li>
+            <li><a href="#contact">Free Consultation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-nav-col">
+          <h4>Company</h4>
+          <ul class="footer-nav-links">
+            <li><a href="#about">About Faimly-T</a></li>
+            <li><a href="#">Our Vision</a></li>
+            <li><a href="#cases">Success Cases</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Copyright bar -->
+      <div class="footer-bottom">
+        <p>Copyright © 2026 Faimly-T. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
       </div>
     </div>
   </footer>
