@@ -3,8 +3,45 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title class="en">CODE Brains — The AI that thinks like your senior engineer | Faimly-T</title>
-<title class="es">CODE Brains — La IA que piensa como tu ingeniero senior | Faimly-T</title>
+<title id="page-title" data-en="CODE Brains — The AI that thinks like your senior engineer | Faimly-T" data-es="CODE Brains — La IA que piensa como tu ingeniero senior | Faimly-T">CODE Brains — The AI that thinks like your senior engineer | Faimly-T</title>
+<meta name="description" id="page-desc" 
+      data-en="A second brain for your codebase. CODE Brains provides contextual, high-level code intelligence and decision guidance aligned with your architecture." 
+      data-es="Un segundo cerebro para tu código. CODE Brains proporciona inteligencia de código contextual de alto nivel y guía de decisiones alineada con tu arquitectura." 
+      content="A second brain for your codebase. CODE Brains provides contextual, high-level code intelligence and decision guidance aligned with your architecture." />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://faimly-t.com/codebrains.html" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://faimly-t.com/codebrains.html" />
+<meta property="og:title" id="og-title" 
+      data-en="CODE Brains — The AI that thinks like your senior engineer | Faimly-T" 
+      data-es="CODE Brains — La IA que piensa como tu ingeniero senior | Faimly-T" 
+      content="CODE Brains — The AI that thinks like your senior engineer | Faimly-T" />
+<meta property="og:description" id="og-desc" 
+      data-en="A second brain for your codebase. CODE Brains provides contextual, high-level code intelligence and decision guidance aligned with your architecture." 
+      data-es="Un segundo cerebro para tu código. CODE Brains proporciona inteligencia de código contextual de alto nivel y guía de decisiones alineada con tu arquitectura." 
+      content="A second brain for your codebase. CODE Brains provides contextual, high-level code intelligence and decision guidance aligned with your architecture." />
+<meta property="og:image" content="https://faimly-t.com/assets/logo-lockup.png" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://faimly-t.com/codebrains.html" />
+<meta name="twitter:title" id="twitter-title" 
+      data-en="CODE Brains — The AI that thinks like your senior engineer | Faimly-T" 
+      data-es="CODE Brains — La IA que piensa como tu ingeniero senior | Faimly-T" 
+      content="CODE Brains — The AI that thinks like your senior engineer | Faimly-T" />
+<meta name="twitter:description" id="twitter-desc" 
+      data-en="A second brain for your codebase. CODE Brains provides contextual, high-level code intelligence and decision guidance aligned with your architecture." 
+      data-es="Un segundo cerebro para tu código. CODE Brains proporciona inteligencia de código contextual de alto nivel y guía de decisiones alineada con tu arquitectura." 
+      content="A second brain for your codebase. CODE Brains provides contextual, high-level code intelligence and decision guidance aligned with your architecture." />
+<meta name="twitter:image" content="https://faimly-t.com/assets/logo-lockup.png" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/logo-icon.png" />
+<link rel="apple-touch-icon" href="assets/logo-icon.png" />
+
 <link rel="stylesheet" href="styles.css?v=1.0.1" />
 <link rel="stylesheet" href="redesign.css?v=1.0.1" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -649,6 +686,24 @@
       document.documentElement.setAttribute('lang', lang);
       document.querySelectorAll('[data-lang-btn]').forEach(function(b){
         b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang);
+      });
+      // Dynamic title and SEO updates
+      var titleEl = document.getElementById('page-title');
+      if (titleEl) {
+        var newTitle = titleEl.getAttribute('data-' + lang);
+        if (newTitle) document.title = newTitle;
+      }
+      var descEl = document.getElementById('page-desc');
+      if (descEl) {
+        var newDesc = descEl.getAttribute('data-' + lang);
+        if (newDesc) descEl.setAttribute('content', newDesc);
+      }
+      ['og-title', 'og-desc', 'twitter-title', 'twitter-desc'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          var newVal = el.getAttribute('data-' + lang);
+          if (newVal) el.setAttribute('content', newVal);
+        }
       });
       localStorage.setItem(KEY, lang);
       window.dispatchEvent(new CustomEvent('lang-changed', { detail: lang }));

@@ -3,7 +3,44 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Faimly-T Portal — Consultancy &amp; Training</title>
+<title id="page-title" data-en="Faimly-T Portal — AI Consultancy, Training &amp; Knowledge" data-es="Portal Faimly-T — Consultoría, Capacitación y Conocimiento de IA">Faimly-T Portal — AI Consultancy, Training &amp; Knowledge</title>
+<meta name="description" id="page-desc" 
+      data-en="Empower your team with AI fluency. The Portal offers role-specific training, AI systems design, architectural consultancy, and a shared knowledge base." 
+      data-es="Empodera a tu equipo con fluidez en IA. El Portal ofrece capacitación por rol, diseño de sistemas, consultoría de arquitectura y una base de conocimientos." 
+      content="Empower your team with AI fluency. The Portal offers role-specific training, AI systems design, architectural consultancy, and a shared knowledge base." />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://faimly-t.com/portal.html" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://faimly-t.com/portal.html" />
+<meta property="og:title" id="og-title" 
+      data-en="Faimly-T Portal — AI Consultancy, Training &amp; Knowledge" 
+      data-es="Portal Faimly-T — Consultoría, Capacitación y Conocimiento de IA" 
+      content="Faimly-T Portal — AI Consultancy, Training &amp; Knowledge" />
+<meta property="og:description" id="og-desc" 
+      data-en="Empower your team with AI fluency. The Portal offers role-specific training, AI systems design, architectural consultancy, and a shared knowledge base." 
+      data-es="Empodera a tu equipo con fluidez en IA. El Portal ofrece capacitación por rol, diseño de sistemas, consultoría de arquitectura y una base de conocimientos." 
+      content="Empower your team with AI fluency. The Portal offers role-specific training, AI systems design, architectural consultancy, and a shared knowledge base." />
+<meta property="og:image" content="https://faimly-t.com/assets/logo-lockup.png" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://faimly-t.com/portal.html" />
+<meta name="twitter:title" id="twitter-title" 
+      data-en="Faimly-T Portal — AI Consultancy, Training &amp; Knowledge" 
+      data-es="Portal Faimly-T — Consultoría, Capacitación y Conocimiento de IA" 
+      content="Faimly-T Portal — AI Consultancy, Training &amp; Knowledge" />
+<meta name="twitter:description" id="twitter-desc" 
+      data-en="Empower your team with AI fluency. The Portal offers role-specific training, AI systems design, architectural consultancy, and a shared knowledge base." 
+      data-es="Empodera a tu equipo con fluidez en IA. El Portal ofrece capacitación por rol, diseño de sistemas, consultoría de arquitectura y una base de conocimientos." 
+      content="Empower your team with AI fluency. The Portal offers role-specific training, AI systems design, architectural consultancy, and a shared knowledge base." />
+<meta name="twitter:image" content="https://faimly-t.com/assets/logo-lockup.png" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/logo-icon.png" />
+<link rel="apple-touch-icon" href="assets/logo-icon.png" />
 <link rel="stylesheet" href="styles.css?v=1.0.1" />
 <link rel="stylesheet" href="redesign.css?v=1.0.1" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -194,6 +231,24 @@
       document.documentElement.setAttribute('lang', lang);
       document.querySelectorAll('[data-lang-btn]').forEach(function(b){
         b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang);
+      });
+      // Dynamic title and SEO updates
+      var titleEl = document.getElementById('page-title');
+      if (titleEl) {
+        var newTitle = titleEl.getAttribute('data-' + lang);
+        if (newTitle) document.title = newTitle;
+      }
+      var descEl = document.getElementById('page-desc');
+      if (descEl) {
+        var newDesc = descEl.getAttribute('data-' + lang);
+        if (newDesc) descEl.setAttribute('content', newDesc);
+      }
+      ['og-title', 'og-desc', 'twitter-title', 'twitter-desc'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          var newVal = el.getAttribute('data-' + lang);
+          if (newVal) el.setAttribute('content', newVal);
+        }
       });
       localStorage.setItem(KEY, lang);
     }
