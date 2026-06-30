@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title class="en">Craft — The governed release gate for AI software | Faimly-T</title>
+<title class="es">Craft — El filtro de entrega gobernado para software de IA | Faimly-T</title>
+<link rel="stylesheet" href="styles.css?v=1.0.1" />
+<link rel="stylesheet" href="redesign.css?v=1.0.1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  /* ============================================================
+     Craft page — bespoke theme on top of the shared redesign base
+     ============================================================ */
+  :root { --gate-line: rgba(255,255,255,0.1); }
+
+  /* ---- Crumb ------------------------------------------------ */
+  .crumb { font-size: 0.82rem; color: var(--color-text-light); margin-bottom: 1.3rem; display: flex; align-items: center; gap: 0.55rem; }
+  .crumb a:hover { color: var(--color-primary); }
+  .crumb i { font-size: 0.6rem; }
+
+  /* ---- HERO ------------------------------------------------- */
+  .craft-hero { padding: 92px 0 96px; }
+  .craft-hero .hero-grid { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 3.4rem; align-items: center; }
+  .craft-hero h1 { font-size: clamp(2.5rem, 4.6vw, 3.7rem); line-height: 1.08; margin: 1.1rem 0 1.4rem; }
+  .craft-hero h1 .grad { background: linear-gradient(100deg, var(--ft-navy) 10%, var(--ft-cyan-600) 95%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .craft-hero .lead { font-size: 1.18rem; max-width: 540px; }
+  .hero-trust { margin-top: 2rem; display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; font-size: 0.84rem; color: var(--color-text-light); }
+  .hero-trust .pip { display: flex; align-items: center; gap: 0.5rem; }
+  .hero-trust .pip i { color: var(--ft-success); }
+
+  /* ---- Hero gate card (the product visual) ------------------ */
+  .gate-card { background: linear-gradient(168deg, #001255 0%, var(--ft-navy-900) 100%); border-radius: var(--radius-card); padding: 1.6rem; box-shadow: var(--shadow-premium); position: relative; overflow: hidden; }
+  .gate-card .scan { position: absolute; inset: 0; background: radial-gradient(70% 55% at 80% 0%, rgba(0,185,255,0.22), transparent 70%); pointer-events: none; }
+  .gate-card .gc-top { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding-bottom: 1.1rem; border-bottom: 1px solid var(--gate-line); }
+  .gate-card .gc-title { display: flex; align-items: center; gap: 0.6rem; color: #fff; font-family: var(--font-title); font-weight: 700; font-size: 0.96rem; }
+  .gate-card .gc-title .dot { width: 26px; height: 26px; border-radius: 7px; background: rgba(0,185,255,0.16); display: flex; align-items: center; justify-content: center; color: var(--ft-cyan); font-size: 0.8rem; }
+  .gate-card .branch { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ft-cyan-300); background: rgba(0,185,255,0.1); border: 1px solid rgba(0,185,255,0.22); padding: 0.28rem 0.6rem; border-radius: var(--radius-pill); }
+  .gate-list { position: relative; z-index: 2; list-style: none; margin: 1.1rem 0; display: flex; flex-direction: column; gap: 0.1rem; }
+  .gate-list li { display: flex; align-items: center; gap: 0.8rem; padding: 0.62rem 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .gate-list li:last-child { border-bottom: none; }
+  .gate-list .gl-ic { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: var(--ft-cyan-300); font-size: 0.78rem; flex-shrink: 0; }
+  .gate-list .gl-name { color: rgba(255,255,255,0.92); font-size: 0.9rem; font-weight: 500; flex-grow: 1; }
+  .gate-list .gl-pass { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ft-success); }
+  .gate-list .gl-pass i { font-size: 0.78rem; }
+  .gate-foot { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; background: rgba(0,185,255,0.1); border: 1px solid rgba(0,185,255,0.22); border-radius: var(--radius-md); padding: 0.85rem 1.1rem; }
+  .gate-foot .gf-l { display: flex; align-items: center; gap: 0.6rem; color: #fff; font-weight: 600; font-size: 0.9rem; }
+  .gate-foot .gf-l i { color: var(--ft-cyan); }
+  .gate-foot .gf-r { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ft-cyan-300); }
+  @media (max-width: 1024px){ .craft-hero .hero-grid { grid-template-columns: 1fr; gap: 2.6rem; } }
+
+  /* ---- Governance-gap band ---------------------------------- */
+  .gap-band { background: var(--ft-navy-900); color: #fff; position: relative; overflow: hidden; }
+  .gap-band .glow { position: absolute; inset: 0; background: radial-gradient(50% 70% at 15% 10%, rgba(0,185,255,0.16), transparent 65%); }
+  .gap-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 3.4rem; align-items: center; }
+  .gap-copy h2 { color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.14; }
+  .gap-copy h2 .accent { color: var(--ft-cyan); }
+  .gap-copy p { color: rgba(255,255,255,0.74); font-size: var(--fs-lead); margin-top: 1.2rem; max-width: 460px; }
+  .gap-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .gap-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-card); padding: 1.9rem 1.7rem; }
+  .gap-stat .big { font-family: var(--font-title); font-weight: 800; font-size: clamp(2.6rem, 5vw, 3.4rem); letter-spacing: -0.03em; line-height: 1; color: #fff; }
+  .gap-stat .big .u { color: var(--ft-cyan); font-size: 0.5em; vertical-align: 0.18em; margin-left: 0.05em; }
+  .gap-stat p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 0.7rem; line-height: 1.5; }
+  @media (max-width: 1024px){ .gap-grid { grid-template-columns: 1fr; gap: 2.4rem; } }
+  @media (max-width: 560px){ .gap-stats { grid-template-columns: 1fr; } }
+
+  /* ---- Manifesto -------------------------------------------- */
+  .craft-manifesto { max-width: 880px; margin: 0 auto; text-align: center; }
+  .craft-manifesto .kicker { margin-bottom: 1.4rem; }
+  .craft-manifesto .big { font-family: var(--font-title); font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.28; letter-spacing: -0.02em; color: var(--color-text-main); }
+  .craft-manifesto .big .accent { color: var(--color-primary); }
+  .craft-manifesto .sub { font-size: var(--fs-lead); color: var(--color-text-muted); max-width: 640px; margin: 1.6rem auto 0; }
+  .neg-row { display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap; margin-top: 2.2rem; }
+  .neg-chip { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 500; color: var(--color-text-light); background: var(--color-bg-card); border: 1px solid var(--color-border); padding: 0.55rem 1.05rem; border-radius: var(--radius-pill); }
+  .neg-chip i { color: var(--ft-danger); font-size: 0.78rem; }
+  .neg-chip.is-yes { color: var(--color-text-main); border-color: var(--ft-cyan-300); background: var(--ft-cyan-050); }
+  .neg-chip.is-yes i { color: var(--ft-success); }
+
+  /* ---- How it works (3 steps) ------------------------------- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; position: relative; }
+  .step { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 2rem 1.9rem; position: relative; transition: var(--transition-smooth); }
+  .step:hover { transform: var(--lift-card); box-shadow: var(--shadow-lg); border-color: var(--color-border-hover); }
+  .step .sn { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--ft-cyan-600); font-weight: 700; }
+  .step .si { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--color-primary-glow); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; margin: 1rem 0 1.1rem; }
+  .step h4 { font-size: 1.18rem; margin-bottom: 0.5rem; }
+  .step p { font-size: 0.92rem; }
+  .step .own { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.1rem; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: var(--radius-pill); }
+  .step .own.client { color: var(--color-text-light); background: var(--color-bg-alt); }
+  .step .own.faimly { color: var(--color-primary); background: var(--color-primary-glow); }
+  @media (max-width: 1100px) and (min-width: 901px) {
+    .steps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px){ .steps { grid-template-columns: 1fr; } }
+
+  /* ---- Release gate grid ------------------------------------ */
+  .checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+  .check { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 1.9rem; transition: var(--transition-smooth); }
+  .check:hover { border-color: var(--color-border-hover); box-shadow: var(--shadow-md); transform: var(--lift-card); }
+  .check .ci { width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--ft-cyan-050); display: flex; align-items: center; justify-content: center; color: var(--ft-cyan-600); font-size: 1.1rem; margin-bottom: 1.1rem; }
+  .check h4 { font-size: 1.06rem; margin-bottom: 0.45rem; }
+  .check p { font-size: 0.88rem; }
+  @media (max-width: 900px){ .checks { grid-template-columns: 1fr; } }
+
+  /* ---- Pull band -------------------------------------------- */
+  .pull-band { background: var(--ft-navy); color: #fff; position: relative; overflow: hidden; }
+  .pull-band .glow { position: absolute; inset: 0; background: radial-gradient(55% 90% at 50% 0%, rgba(0,185,255,0.2), transparent 70%); }
+  .pull-band .q { max-width: 920px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+  .pull-band .q p { font-family: var(--font-title); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.3; letter-spacing: -0.02em; color: #fff; }
+  .pull-band .q .accent { color: var(--ft-cyan); }
+
+  /* ---- Value comparison ------------------------------------- */
+  .value-head { max-width: 720px; }
+  .compare { border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-premium); background: var(--color-bg-card); }
+  .compare-row { display: grid; grid-template-columns: 1.4fr 1fr 1fr; }
+  .compare-row > div { padding: 1.25rem 1.6rem; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; }
+  .compare-row:last-child > div { border-bottom: none; }
+  .compare-row .lbl { color: var(--color-text-muted); font-size: 0.92rem; }
+  .compare-row .craft-col { background: var(--color-primary-glow); font-family: var(--font-title); font-weight: 700; color: var(--color-primary); justify-content: flex-start; gap: 0.5rem; }
+  .compare-row .dev-col { color: var(--color-text-light); font-family: var(--font-title); font-weight: 600; }
+  .compare-row.head > div { padding-top: 1.1rem; padding-bottom: 1.1rem; }
+  .compare-row.head .lbl { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-light); }
+  .compare-row.head .craft-col { background: var(--ft-navy); color: #fff; font-size: 0.82rem; letter-spacing: 0.04em; }
+  .compare-row.head .dev-col { color: var(--color-text-main); font-size: 0.82rem; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; }
+  .compare-row .craft-col .zero { color: var(--ft-success); }
+  .value-note { font-size: 0.84rem; color: var(--color-text-light); margin-top: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .value-note i { color: var(--color-primary); }
+  @media (max-width: 760px){ .compare-row { grid-template-columns: 1.2fr 0.9fr 0.9fr; } .compare-row > div { padding: 1rem 0.9rem; font-size: 0.82rem; } }
+
+  /* ---- Pricing ---------------------------------------------- */
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; max-width: 880px; margin: 0 auto; }
+  .price-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 2.2rem; position: relative; transition: var(--transition-smooth); }
+  .price-card:hover { box-shadow: var(--shadow-lg); transform: var(--lift-card); }
+  .price-card.is-feature { background: linear-gradient(168deg, #001255 0%, var(--ft-navy-900) 100%); border-color: transparent; color: rgba(255,255,255,0.82); overflow: hidden; }
+  .price-card.is-feature .pc-glow { position: absolute; inset: 0; background: radial-gradient(60% 60% at 85% 0%, rgba(0,185,255,0.2), transparent 70%); }
+  .price-card .pc-tag { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-light); }
+  .price-card.is-feature .pc-tag { color: var(--ft-cyan-300); position: relative; z-index: 2; }
+  .price-card .pc-name { font-family: var(--font-title); font-weight: 700; font-size: 1.3rem; color: var(--color-text-main); margin: 0.5rem 0 1rem; }
+  .price-card.is-feature .pc-name { color: #fff; position: relative; z-index: 2; }
+  .price-card .pc-amount { display: flex; align-items: baseline; gap: 0.5rem; position: relative; z-index: 2; }
+  .price-card .pc-amount .num { font-family: var(--font-title); font-weight: 800; font-size: 2.6rem; letter-spacing: -0.03em; color: var(--color-text-main); }
+  .price-card.is-feature .pc-amount .num { color: #fff; }
+  .price-card .pc-amount .per { font-size: 0.9rem; color: var(--color-text-light); }
+  .price-card.is-feature .pc-amount .per { color: rgba(255,255,255,0.6); }
+  .price-card .pc-ref { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.6rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; color: var(--ft-warning); background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); padding: 0.28rem 0.7rem; border-radius: var(--radius-pill); position: relative; z-index: 2; }
+  .price-card ul { list-style: none; margin: 1.4rem 0 1.6rem; display: flex; flex-direction: column; gap: 0.7rem; position: relative; z-index: 2; }
+  .price-card li { display: flex; gap: 0.6rem; font-size: 0.9rem; color: var(--color-text-muted); }
+  .price-card.is-feature li { color: rgba(255,255,255,0.82); }
+  .price-card li i { color: var(--color-primary); font-size: 0.8rem; margin-top: 0.28rem; }
+  .price-card.is-feature li i { color: var(--ft-cyan); }
+  .price-card .btn { width: 100%; position: relative; z-index: 2; }
+  .price-foot { max-width: 880px; margin: 1.4rem auto 0; display: flex; align-items: center; justify-content: center; gap: 1.4rem; flex-wrap: wrap; }
+  .price-pill { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted); }
+  .price-pill i { color: var(--ft-success); }
+  .ref-note { text-align: center; font-size: 0.82rem; color: var(--color-text-light); margin-top: 1.6rem; max-width: 620px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 760px){ .price-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-lang="en">
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+    <ul class="nav-links">
+      <li><a href="#problem"><span class="en">The gap</span><span class="es">Brecha</span></a></li>
+      <li><a href="#how"><span class="en">How it works</span><span class="es">Proceso</span></a></li>
+      <li><a href="#gate"><span class="en">The release gate</span><span class="es">Filtro</span></a></li>
+      <li><a href="#value"><span class="en">The value</span><span class="es">Valor</span></a></li>
+      <li><a href="#pricing"><span class="en">Pricing</span><span class="es">Precios</span></a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en" class="active">EN</button>
+        <button data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero craft-hero ft-dot-grid" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="crumb">
+          <a href="index.html"><span class="en">Products</span><span class="es">Productos</span></a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span>Craft</span>
+        </div>
+        <span class="eyebrow is-green">
+          <i class="fa-solid fa-circle" style="font-size:0.45rem"></i>
+          <span class="en">Flagship · Available now — US &amp; LatAm</span>
+          <span class="es">Insignia · Disponible ahora — EE. UU. y LatAm</span>
+        </span>
+        <h1>
+          <span class="en">Your team builds with AI.<br /><span class="grad">We make it production-grade.</span></span>
+          <span class="es">Tu equipo construye con IA.<br /><span class="grad">Nosotros lo elevamos a nivel de producción.</span></span>
+        </h1>
+        <p class="lead">
+          <span class="en">Craft is a governed software-delivery system. Your business analysts build on a feature branch with their own AI tools — we own the release gate, so every merge is clean, secure, documented, and held to the standard great engineers have always aspired to.</span>
+          <span class="es">Craft es un sistema de entrega de software gobernado. Tus analistas de negocio construyen en una rama de características con sus propias herramientas de IA —nosotros controlamos el filtro de entrega, garantizando que cada fusión sea limpia, segura, documentada y cumpla con el estándar al que los grandes ingenieros siempre han aspirado.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="mailto:ventas@faimly-t.com?subject=Start%20with%20Craft">
+            <span class="en">Start with Craft</span><span class="es">Comenzar con Craft</span> <i class="fa-solid fa-arrow-right arrow"></i>
+          </a>
+          <a class="btn btn-outline btn-lg" href="#how">
+            <span class="en">See how it works</span><span class="es">Ver cómo funciona</span>
+          </a>
+        </div>
+        <div class="hero-trust">
+          <span class="pip"><i class="fa-solid fa-circle-check"></i> <span class="en">No monthly fee</span><span class="es">Sin tarifa mensual</span></span>
+          <span class="pip"><i class="fa-solid fa-circle-check"></i> <span class="en">No lock-in</span><span class="es">Sin permanencia</span></span>
+          <span class="pip"><i class="fa-solid fa-circle-check"></i> <span class="en">Pay only when you ship</span><span class="es">Paga solo al entregar</span></span>
+        </div>
+      </div>
+
+      <!-- The product visual: the release gate -->
+      <div class="gate-card reveal">
+        <div class="scan"></div>
+        <div class="gc-top">
+          <div class="gc-title">
+            <span class="dot"><i class="fa-solid fa-shield-halved"></i></span>
+            <span class="en">Craft the Code · release gate</span>
+            <span class="es">Craft the Code · filtro de entrega</span>
+          </div>
+          <span class="branch">feat/checkout</span>
+        </div>
+        <ul class="gate-list">
+          <li>
+            <span class="gl-ic"><i class="fa-solid fa-sitemap"></i></span>
+            <span class="gl-name"><span class="en">DDD alignment</span><span class="es">Alineación DDD</span></span>
+            <span class="gl-pass"><i class="fa-solid fa-check"></i> PASS</span>
+          </li>
+          <li>
+            <span class="gl-ic"><i class="fa-solid fa-cubes"></i></span>
+            <span class="gl-name"><span class="en">SOLID architecture</span><span class="es">Arquitectura SOLID</span></span>
+            <span class="gl-pass"><i class="fa-solid fa-check"></i> PASS</span>
+          </li>
+          <li>
+            <span class="gl-ic"><i class="fa-solid fa-lock"></i></span>
+            <span class="gl-name"><span class="en">Security review</span><span class="es">Revisión de seguridad</span></span>
+            <span class="gl-pass"><i class="fa-solid fa-check"></i> PASS</span>
+          </li>
+          <li>
+            <span class="gl-ic"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+            <span class="gl-name"><span class="en">UX quality check</span><span class="es">Control de calidad de UX</span></span>
+            <span class="gl-pass"><i class="fa-solid fa-check"></i> PASS</span>
+          </li>
+          <li>
+            <span class="gl-ic"><i class="fa-solid fa-book"></i></span>
+            <span class="gl-name"><span class="en">Documentation</span><span class="es">Documentación</span></span>
+            <span class="gl-pass"><i class="fa-solid fa-check"></i> PASS</span>
+          </li>
+          <li>
+            <span class="gl-ic"><i class="fa-solid fa-gauge-high"></i></span>
+            <span class="gl-name"><span class="en">Efficiency &amp; cost</span><span class="es">Eficiencia y costo</span></span>
+            <span class="gl-pass"><i class="fa-solid fa-check"></i> PASS</span>
+          </li>
+        </ul>
+        <div class="gate-foot">
+          <span class="gf-l">
+            <i class="fa-solid fa-code-merge"></i>
+            <span class="en">Merged to production</span><span class="es">Fusionado a producción</span>
+          </span>
+          <span class="gf-r"><span class="en">refactored · documented · clean</span><span class="es">refactorizado · documentado · limpio</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== THE GAP ===================== -->
+<section class="gap-band section" id="problem">
+  <div class="glow"></div>
+  <div class="container wide">
+    <div class="gap-grid">
+      <div class="gap-copy reveal">
+        <span class="eyebrow is-ghost"><span class="en">Why Craft exists</span><span class="es">Por qué existe Craft</span></span>
+        <h2 style="margin-top:1.1rem;">
+          <span class="en">AI made building cheap.<br />It didn't make it <span class="accent">safe.</span></span>
+          <span class="es">La IA abarató la construcción.<br />Pero no la hizo <span class="accent">segura.</span></span>
+        </h2>
+        <p>
+          <span class="en">Anyone can ship software with AI now. Almost no one can ship it <em>right</em> — secure, architected, maintainable. Speed without governance is how a quick win becomes a liability.</span>
+          <span class="es">Cualquiera puede entregar software con IA hoy en día. Casi nadie puede entregarlo <em>bien</em> — seguro, bien diseñado, mantenible. La velocidad sin gobernanza es como una victoria rápida se convierte en un riesgo.</span>
+        </p>
+      </div>
+      <div class="gap-stats reveal">
+        <div class="gap-stat">
+          <div class="big">65<span class="u">%</span></div>
+          <p>
+            <span class="en">of "vibe-coded" apps ship with security flaws baked in from day one.</span>
+            <span class="es">de las aplicaciones programadas a base de corazonadas se entregan con fallas de seguridad desde el primer día.</span>
+          </p>
+        </div>
+        <div class="gap-stat">
+          <div class="big">~74<span class="u">%</span></div>
+          <p>
+            <span class="en">of AI-generated code needs meaningful rework before it's production-ready.</span>
+            <span class="es">del código generado por IA necesita modificaciones significativas antes de estar listo para producción.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT IT IS / MANIFESTO ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="craft-manifesto reveal">
+      <span class="eyebrow kicker"><span class="en">What Craft is</span><span class="es">Qué es Craft</span></span>
+      <p class="big">
+        <span class="en">For decades, engineers have known what great software looks like — clean architecture, security by design, real documentation. It stayed on the whiteboard because the coordination cost was too high. <span class="accent">Craft makes the right version the default version.</span></span>
+        <span class="es">Durante décadas, los ingenieros han sabido cómo se ve el gran software — arquitectura limpia, seguridad por diseño, documentación real. Se quedaba en la pizarra porque el costo de coordinación era demasiado alto. <span class="accent">Craft hace que la versión correcta sea la versión por defecto.</span></span>
+      </p>
+      <p class="sub">
+        <span class="en">Your team keeps building the way they already do. Craft is the governed gate every change passes through before it reaches production — applied to every release, by default.</span>
+        <span class="es">Tu equipo sigue construyendo de la forma en que ya lo hace. Craft es el filtro gobernado por el que pasa cada cambio antes de llegar a producción — aplicado a cada lanzamiento, por defecto.</span>
+      </p>
+      <div class="neg-row">
+        <span class="neg-chip"><i class="fa-solid fa-xmark"></i> <span class="en">Not a faster template</span><span class="es">No es una plantilla más rápida</span></span>
+        <span class="neg-chip"><i class="fa-solid fa-xmark"></i> <span class="en">Not a code generator</span><span class="es">No es un generador de código</span></span>
+        <span class="neg-chip is-yes"><i class="fa-solid fa-check"></i> <span class="en">The real thing, on every merge</span><span class="es">El producto real, en cada fusión</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="section section--alt" id="how">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow is-cyan"><span class="en">Craft in four steps</span><span class="es">Craft en cuatro pasos</span></span>
+      <h2>
+        <span class="en">Your tools, your pace — our release gate.</span>
+        <span class="es">Tus herramientas, tu ritmo — nuestro filtro de entrega.</span>
+      </h2>
+      <p>
+        <span class="en">You keep ownership of how you build. We take ownership of what ships.</span>
+        <span class="es">Tú mantienes la propiedad de cómo construyes. Nosotros asumimos la propiedad de lo que se entrega.</span>
+      </p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="sn"><span class="en">STEP 01</span><span class="es">PASO 01</span></div>
+        <div class="si"><i class="fa-solid fa-code-branch"></i></div>
+        <h4><span class="en">Your team builds</span><span class="es">Tu equipo construye</span></h4>
+        <p>
+          <span class="en">On a feature branch, with whatever AI tools they prefer — Claude, Copilot, Cursor. Your code, your tokens, your pace.</span>
+          <span class="es">En una rama de características, con las herramientas de IA que prefieran — Claude, Copilot, Cursor. Tu código, tus tokens, tu ritmo.</span>
+        </p>
+        <span class="own client"><span class="en">You own this</span><span class="es">Tú controlas esto</span></span>
+      </div>
+      <div class="step">
+        <div class="sn"><span class="en">STEP 02</span><span class="es">PASO 02</span></div>
+        <div class="si"><i class="fa-solid fa-robot"></i></div>
+        <h4><span class="en">AI agents build &amp; draft</span><span class="es">Agentes IA construyen</span></h4>
+        <p>
+          <span class="en">Our agents craft and organize 80% of the code, preparing it for the Craft review. The code remains completely owned by you.</span>
+          <span class="es">Nuestros agentes diseñan y organizan el 80% del código, preparándolo para el filtro Craft. El código sigue siendo 100% de tu propiedad.</span>
+        </p>
+        <span class="own client"><span class="en">You own this</span><span class="es">Tú controlas esto</span></span>
+      </div>
+      <div class="step">
+        <div class="sn"><span class="en">STEP 03</span><span class="es">PASO 03</span></div>
+        <div class="si"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4><span class="en">We run the release gate</span><span class="es">Ejecutamos el filtro</span></h4>
+        <p>
+          <span class="en">Architecture, security, UX, quality, documentation — reviewed and refactored. Your business analysts see the feedback. Everyone gets sharper.</span>
+          <span class="es">Arquitectura, seguridad, UX, calidad, documentación —revisadas y refactorizadas. Tus analistas de negocio ven la retroalimentación. Todos mejoran.</span>
+        </p>
+        <span class="own faimly"><span class="en">Faimly-T owns this</span><span class="es">Faimly-T controla esto</span></span>
+      </div>
+      <div class="step">
+        <div class="sn"><span class="en">STEP 04</span><span class="es">PASO 04</span></div>
+        <div class="si"><i class="fa-solid fa-code-merge"></i></div>
+        <h4><span class="en">Production-grade code ships</span><span class="es">Se entrega código de producción</span></h4>
+        <p>
+          <span class="en">Refactored, documented, clean — merged to production. No heroics, no firefighting. Reliable software, every time.</span>
+          <span class="es">Refactorizado, documentado, limpio — fusionado a producción. Sin actos heroicos ni apagar incendios. Software confiable, siempre.</span>
+        </p>
+        <span class="own faimly"><span class="en">Governed merge</span><span class="es">Fusión gobernada</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE RELEASE GATE ===================== -->
+<section class="section" id="gate">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow"><span class="en">The release gate</span><span class="es">El filtro de entrega</span></span>
+      <h2>
+        <span class="en">Every merge, held to the standard.</span>
+        <span class="es">Cada fusión, mantenida bajo el estándar.</span>
+      </h2>
+      <p>
+        <span class="en">What used to require a team of ten senior specialists and a six-month timeline now runs on every feature your team ships.</span>
+        <span class="es">Lo que solía requerir un equipo de diez especialistas senior y un cronograma de seis meses, ahora se ejecuta en cada característica que entrega tu equipo.</span>
+      </p>
+    </div>
+    <div class="checks reveal">
+      <div class="check">
+        <div class="ci"><i class="fa-solid fa-sitemap"></i></div>
+        <h4><span class="en">DDD alignment</span><span class="es">Alineación DDD</span></h4>
+        <p>
+          <span class="en">Clean domain-driven boundaries and a bounded core that holds up as the system grows.</span>
+          <span class="es">Límites limpios guiados por el dominio y un núcleo delimitado que se mantiene firme a medida que el sistema crece.</span>
+        </p>
+      </div>
+      <div class="check">
+        <div class="ci"><i class="fa-solid fa-cubes"></i></div>
+        <h4><span class="en">SOLID architecture</span><span class="es">Arquitectura SOLID</span></h4>
+        <p>
+          <span class="en">Principled, maintainable structure reviewed against the patterns great engineers have always argued for.</span>
+          <span class="es">Estructura basada en principios y mantenible, revisada frente a los patrones por los que los grandes ingenieros siempre han abogado.</span>
+        </p>
+      </div>
+      <div class="check">
+        <div class="ci"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4><span class="en">Security review</span><span class="es">Revisión de seguridad</span></h4>
+        <p>
+          <span class="en">Security-by-design scanning, so the speed of AI never ships you a liability.</span>
+          <span class="es">Escaneo de seguridad desde el diseño, para que la velocidad de la IA nunca te genere una vulnerabilidad.</span>
+        </p>
+      </div>
+      <div class="check">
+        <div class="ci"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h4><span class="en">UX quality check</span><span class="es">Control de calidad de UX</span></h4>
+        <p>
+          <span class="en">The experience is reviewed, not just the logic — so what ships is genuinely usable.</span>
+          <span class="es">Se revisa la experiencia, no solo la lógica — para que lo que se entregue sea realmente utilizable.</span>
+        </p>
+      </div>
+      <div class="check">
+        <div class="ci"><i class="fa-solid fa-book"></i></div>
+        <h4><span class="en">Documentation</span><span class="es">Documentación</span></h4>
+        <p>
+          <span class="en">Proper, current documentation generated and merged with every change — never an afterthought.</span>
+          <span class="es">Documentación adecuada y actualizada, generada y fusionada con cada cambio, nunca de forma improvisada.</span>
+        </p>
+      </div>
+      <div class="check">
+        <div class="ci"><i class="fa-solid fa-gauge-high"></i></div>
+        <h4><span class="en">Efficiency &amp; cost</span><span class="es">Eficiencia y costo</span></h4>
+        <p>
+          <span class="en">Performance and cost reviewed before merge, so production stays lean and predictable.</span>
+          <span class="es">Rendimiento y costos revisados antes de la fusión, para que la producción siga siendo ligera y predecible.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PULL QUOTE ===================== -->
+<section class="section--tight pull-band">
+  <div class="container" style="padding-top:5rem;padding-bottom:5rem;">
+    <div class="glow"></div>
+    <div class="q reveal">
+      <p>
+        <span class="en">"The practices that used to require ten specialists and a six-month timeline are now the <span class="accent">standard for every feature</span> your team ships."</span>
+        <span class="es">"Las prácticas que solían requerir diez especialistas y un cronograma de seis meses son ahora el <span class="accent">estándar para cada característica</span> que entrega tu equipo."</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE VALUE / COMPARISON ===================== -->
+<section class="section section--alt" id="value">
+  <div class="container wide">
+    <div class="section-head left value-head">
+      <span class="eyebrow is-cyan"><span class="en">A team, not a salary</span><span class="es">Un equipo, no un salario</span></span>
+      <h2>
+        <span class="en">A full senior team — only when you ship.</span>
+        <span class="es">Un equipo senior completo — solo cuando entregas.</span>
+      </h2>
+      <p>
+        <span class="en">Shipping software the right way used to mean staffing an architect, a security engineer, a QA lead, a DevOps engineer, and a technical writer. Craft gives you all of it as a governed release gate, billed per finished feature — never per month.</span>
+        <span class="es">Entregar software de la manera correcta solía significar contratar a un arquitecto, un ingeniero de seguridad, un líder de control de calidad, un ingeniero de DevOps y un redactor técnico. Craft te da todo esto como un filtro de entrega gobernado, facturado por característica terminada — nunca por mes.</span>
+      </p>
+    </div>
+    <div class="compare reveal">
+      <div class="compare-row head">
+        <div class="lbl"><span class="en">In a given month</span><span class="es">En un mes determinado</span></div>
+        <div class="craft-col">Craft · pay-per-craft</div>
+        <div class="dev-col"><span class="en">One mid developer</span><span class="es">Un desarrollador intermedio</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="lbl"><span class="en">A typical two-feature month</span><span class="es">Un mes típico de dos funcionalidades</span></div>
+        <div class="craft-col">~$2,400</div>
+        <div class="dev-col"><span class="en">~$3,800 fixed</span><span class="es">~$3,800 fijo</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="lbl"><span class="en">A one-feature month</span><span class="es">Un mes de una característica</span></div>
+        <div class="craft-col">~$1,200</div>
+        <div class="dev-col"><span class="en">~$3,800 fixed</span><span class="es">~$3,800 fijo</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="lbl"><span class="en">A month with no work</span><span class="es">Un mes sin trabajo</span></div>
+        <div class="craft-col"><span class="zero">$0</span></div>
+        <div class="dev-col"><span class="en">~$3,800 fixed</span><span class="es">~$3,800 fijo</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="lbl"><span class="en">What you actually get</span><span class="es">Lo que realmente obtienes</span></div>
+        <div class="craft-col"><span class="en">A governed team</span><span class="es">Un equipo gobernado</span></div>
+        <div class="dev-col"><span class="en">One person, one skillset</span><span class="es">Una sola persona, una sola especialidad</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="lbl"><span class="en">Commitment</span><span class="es">Compromiso</span></div>
+        <div class="craft-col"><span class="en">Pause anytime</span><span class="es">Pausa cuando quieras</span></div>
+        <div class="dev-col"><span class="en">Salary, vacation, rotation</span><span class="es">Salario, vacaciones, rotación</span></div>
+      </div>
+    </div>
+    <p class="value-note">
+      <i class="fa-solid fa-circle-info"></i>
+      <span class="en">A salaried developer costs the same whether they ship or not. Craft costs nothing in a month you don't build.</span>
+      <span class="es">Un desarrollador asalariado cuesta lo mismo entregue o no. Craft no cuesta nada en un mes en el que no construyes.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section class="section" id="pricing">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow is-amber"><i class="fa-solid fa-tag"></i> <span class="en">Reference pricing</span><span class="es">Precios de referencia</span></span>
+      <h2>
+        <span class="en">Simple, output-based pricing.</span>
+        <span class="es">Precios simples basados en resultados.</span>
+      </h2>
+      <p>
+        <span class="en">You pay for finished, production-grade features — not for a salary that runs whether code ships or not.</span>
+        <span class="es">Pagas por características terminadas de grado de producción —no por un salario fijo, se entregue código o no.</span>
+      </p>
+    </div>
+    <div class="price-grid reveal">
+      <div class="price-card">
+        <div class="pc-tag"><span class="en">One-time entry</span><span class="es">Entrada única</span></div>
+        <div class="pc-name"><span class="en">First Setup</span><span class="es">Configuración inicial</span></div>
+        <div class="pc-amount"><span class="num">$3,500</span><span class="per"><span class="en">one-time</span><span class="es">una vez</span></span></div>
+        <span class="pc-ref"><i class="fa-solid fa-circle-info"></i> <span class="en">Reference figure</span><span class="es">Cifra de referencia</span></span>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> <span class="en">Base repository + architecture blueprint</span><span class="es">Repositorio base + plano de arquitectura</span></li>
+          <li><i class="fa-solid fa-check"></i> <span class="en">Initial documentation set</span><span class="es">Conjunto de documentación inicial</span></li>
+          <li><i class="fa-solid fa-check"></i> <span class="en">Your first two governed crafts included</span><span class="es">Tus dos primeras entregas gobernadas incluidas</span></li>
+        </ul>
+      </div>
+      <div class="price-card is-feature">
+        <div class="pc-glow"></div>
+        <div class="pc-tag"><span class="en">Then pay as you go</span><span class="es">Luego paga por uso</span></div>
+        <div class="pc-name"><span class="en">Per Craft</span><span class="es">Por entrega</span></div>
+        <div class="pc-amount"><span class="num">$1,200</span><span class="per"><span class="en">/ shipped feature</span><span class="es">/ característica entregada</span></span></div>
+        <span class="pc-ref"><i class="fa-solid fa-circle-info"></i> <span class="en">Reference figure</span><span class="es">Cifra de referencia</span></span>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> <span class="en">One governed change, gate to production</span><span class="es">Un cambio gobernado, del filtro a producción</span></li>
+          <li><i class="fa-solid fa-check"></i> <span class="en">Full review, refactor &amp; documentation</span><span class="es">Revisión completa, refactorización y documentación</span></li>
+          <li><i class="fa-solid fa-check"></i> <span class="en">Buy as many or as few as you need</span><span class="es">Compra tantas o tan pocas como necesites</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="price-foot">
+      <span class="price-pill"><i class="fa-solid fa-circle-check"></i> <span class="en">No retainer</span><span class="es">Sin anticipos</span></span>
+      <span class="price-pill"><i class="fa-solid fa-circle-check"></i> <span class="en">No monthly fee</span><span class="es">Sin tarifa mensual</span></span>
+      <span class="price-pill"><i class="fa-solid fa-circle-check"></i> <span class="en">No lock-in</span><span class="es">Sin permanencia</span></span>
+    </div>
+    <p class="ref-note">
+      <span class="en">Figures shown are indicative reference prices for layout — final pricing is scoped to your project. A quiet month costs nothing; a busy month still costs less than the team you'd otherwise hire.</span>
+      <span class="es">Las cifras mostradas son precios de referencia indicativos para el diseño — el precio final se define según tu proyecto. Un mes tranquilo no cuesta nada; un mes ocupado cuesta menos que el equipo que de otro modo tendrías que contratar.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== MOVEMENT CTA + FOOTER ===================== -->
+<footer class="footer" id="contact">
+  <div class="container wide">
+    <div class="movement reveal" style="border-radius:var(--radius-card);padding:4rem 2rem;margin-bottom:4rem;background-image:linear-gradient(rgba(0,10,61,0.82),rgba(0,10,61,0.92)),url('assets/backgrounds/tron-tree.jpg');background-size:cover;background-position:center;">
+      <div class="movement-glow"></div>
+      <div class="container">
+        <div class="movement-inner">
+          <span class="eyebrow is-ghost"><span class="en">Get started</span><span class="es">Comenzar</span></span>
+          <h2>
+            <span class="en">Ready to ship the version you always knew was right?</span>
+            <span class="es">¿Listo para entregar la versión que siempre supiste que era la correcta?</span>
+          </h2>
+          <p>
+            <span class="en">Your team's first governed release — built to the standard, paid only when it ships.</span>
+            <span class="es">El primer lanzamiento gobernado de tu equipo — construido bajo el estándar, pagado solo cuando se entrega.</span>
+          </p>
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn btn-cyan btn-lg" href="mailto:ventas@faimly-t.com?subject=Start%20with%20Craft">
+              <span class="en">Start with Craft</span><span class="es">Comenzar con Craft</span> <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+            <a class="btn btn-ghost-light btn-lg" href="index.html">
+              <span class="en">Back to all products</span><span class="es">Volver a todos los productos</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+        <p>
+          <span class="en">AI-powered engineering for a world that's building more than ever before.</span>
+          <span class="es">Ingeniería potenciada por IA para un mundo que construye más que nunca.</span>
+        </p>
+        <div class="footer-contact"><i class="fa-solid fa-envelope"></i> <a href="mailto:ventas@faimly-t.com">ventas@faimly-t.com</a></div>
+      </div>
+      <div class="footer-grid-nav" style="display:contents;">
+        <div class="footer-col">
+          <h5><span class="en">Products</span><span class="es">Productos</span></h5>
+          <ul>
+            <li><a href="craft.html">Craft</a></li>
+            <li><a href="codebrains.html">CODE Brains</a></li>
+            <li><a href="javascript:void(0)" data-coming-soon="Clara">Clara</a></li>
+            <li><a href="javascript:void(0)" data-coming-soon="Catch">Catch</a></li>
+            <li><a href="portal.html">Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5><span class="en">Craft</span><span class="es">Craft</span></h5>
+          <ul>
+            <li><a href="#problem"><span class="en">The gap</span><span class="es">La brecha</span></a></li>
+            <li><a href="#how"><span class="en">How it works</span><span class="es">Cómo funciona</span></a></li>
+            <li><a href="#gate"><span class="en">The release gate</span><span class="es">El filtro de entrega</span></a></li>
+            <li><a href="#pricing"><span class="en">Pricing</span><span class="es">Precios</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5><span class="en">Get in touch</span><span class="es">Contacto</span></h5>
+          <ul>
+            <li><a href="mailto:ventas@faimly-t.com"><span class="en">Talk to us</span><span class="es">Hablemos</span></a></li>
+            <li><a href="mailto:ventas@faimly-t.com?subject=Become%20a%20partner"><span class="en">Become a partner</span><span class="es">Conviértete en socio</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>
+        <span class="en">© 2026 Faimly-T. AI-powered engineering.</span>
+        <span class="es">© 2026 Faimly-T. Ingeniería potenciada por IA.</span>
+      </span>
+      <span>
+        <span class="en">US · LatAm · Europe horizon</span>
+        <span class="es">Horizonte EE. UU. · LatAm · Europa</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="redesign.js"></script>
+<script>
+  (function(){
+    var KEY='ft-portal-lang';
+    var saved = localStorage.getItem(KEY) || 'en';
+    function set(lang){
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang);
+      });
+      localStorage.setItem(KEY, lang);
+      window.dispatchEvent(new CustomEvent('lang-changed', { detail: lang }));
+    }
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.addEventListener('click', function(){ set(b.getAttribute('data-lang-btn')); });
+    });
+    set(saved);
+  })();
+</script>
+</body>
+</html>

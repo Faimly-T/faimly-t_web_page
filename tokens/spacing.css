@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Faimly-T — Spacing & Layout Tokens
+   --------------------------------------------------------------------------
+   A soft 4px-based scale. Sections breathe (7rem vertical rhythm); content
+   caps at a 1200px container with 1.5rem gutters.
+   ========================================================================== */
+
+:root {
+  --space-1: 0.25rem;   /*  4px */
+  --space-2: 0.5rem;    /*  8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 2.5rem;    /* 40px */
+  --space-8: 3rem;      /* 48px */
+  --space-9: 4rem;      /* 64px */
+  --space-10: 7rem;     /* 112px — section rhythm */
+
+  --container-max: 1200px;   /* @kind spacing */
+  --container-pad: 1.5rem;    /* @kind spacing */
+  --section-y: 7rem;          /* @kind spacing */
+}

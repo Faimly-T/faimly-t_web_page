@@ -1,0 +1,35 @@
+/* ==========================================================================
+   Faimly-T — Webfonts
+   --------------------------------------------------------------------------
+   POPPINS is the official Faimly-T typeface (delivered in the brand kit;
+   matches the logo wordmark). It is bundled here as local .ttf @font-face so
+   it ships with the system. Plus Jakarta Sans (web-body fallback used on the
+   live marketing site) and JetBrains Mono (code) load from Google Fonts.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Poppins'; font-style: normal; font-weight: 300; font-display: swap;
+  src: url('../assets/fonts/Poppins-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins'; font-style: normal; font-weight: 500; font-display: swap;
+  src: url('../assets/fonts/Poppins-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap;
+  src: url('../assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins'; font-style: normal; font-weight: 800; font-display: swap;
+  src: url('../assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');

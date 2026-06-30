@@ -1,458 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faimly-T | Next-Gen AI Consulting & Software Development</title>
-  <meta name="description"
-    content="Faimly-T accelerates businesses with state-of-the-art AI integration, custom software engineering, and strategic technology consulting. Get a free lead consultation today.">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title class="en">Faimly-T — AI isn't replacing knowledge workers</title>
+<title class="es">Faimly-T — La IA no está reemplazando a los trabajadores del conocimiento</title>
+<link rel="stylesheet" href="styles.css?v=1.0.1" />
+<link rel="stylesheet" href="redesign.css?v=1.0.1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  /* Final composition: B-style dark image hero + A belief + C products + footer */
+  .hero-final {
+    position: relative; color: #fff; padding: 124px 0 132px; overflow: hidden;
+    background-image: linear-gradient(rgba(0,10,61,0.74), rgba(0,10,61,0.92)), url('assets/backgrounds/tron-tree.jpg');
+    background-size: cover; background-position: center;
+  }
+  .hero-final .hero-glow { position: absolute; inset: 0; background: radial-gradient(52% 62% at 28% 32%, rgba(0,185,255,0.24), transparent 66%); z-index: 1; }
+  .hero-final .container { position: relative; z-index: 3; }
+  .hero-final .inner { max-width: 900px; }
+  .hero-final h1 { color: #fff; font-size: clamp(2.6rem, 5.4vw, 4.4rem); letter-spacing: -0.03em; }
+  .hero-final h1 .glow { color: var(--ft-cyan); }
+  .hero-final .sub { color: #fff; font-size: 1.5rem; }
+  .hero-final .lead { color: rgba(255,255,255,0.74); max-width: 640px; }
+  .hero-final .hero-note { color: rgba(255,255,255,0.62); }
 
-  <!-- Premium Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- FontAwesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  /* C editorial product styles */
+  .ed-head { display: grid; grid-template-columns: auto 1fr; gap: 1.6rem; align-items: baseline; margin-bottom: 3rem; }
+  .ed-head .idx { font-family: var(--font-title); font-weight: 800; font-size: 1rem; color: var(--ft-cyan-600); letter-spacing: 0.05em; padding-top: 0.5rem; white-space: nowrap; }
+  .ed-head .ttl h2 { font-size: var(--fs-h2); }
+  .ed-head .ttl p { font-size: var(--fs-lead); color: var(--color-text-muted); margin-top: 0.8rem; max-width: 620px; }
+  .index-list { border-top: 1px solid var(--color-border); }
+  .index-row { display: grid; grid-template-columns: auto 1.3fr 2fr auto; gap: 2rem; align-items: center; padding: 2.1rem 0.5rem; border-bottom: 1px solid var(--color-border); transition: var(--transition-smooth); }
+  .index-row:hover { background: var(--color-bg-alt); padding-left: 1.2rem; padding-right: 1.2rem; }
+  .index-row .ix { font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-light); }
+  .index-row .nm { display: flex; flex-direction: column; gap: 0.4rem; }
+  .index-row .nm h3 { font-size: 1.45rem; }
+  .index-row .nm .meta { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ft-cyan-600); }
+  .index-row .ds { font-size: 0.95rem; color: var(--color-text-muted); }
+  .index-row .ds .partner { display: block; margin-top: 0.5rem; font-size: 0.82rem; color: var(--color-text-light); }
+  .index-row .go { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--color-border-hover); display: flex; align-items: center; justify-content: center; color: var(--color-text-main); flex-shrink: 0; }
+  .index-row:hover .go { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+  /* flagship as a clickable entry to the Craft page */
+  a.flagship { text-decoration: none; transition: var(--transition-smooth); }
+  a.flagship:hover { transform: var(--lift-card); box-shadow: 0 26px 40px -12px rgba(0,24,144,0.18); }
+  a.flagship:hover .flag-cta { gap: 0.85rem; }
+  .flag-cta { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--font-title); font-weight: 600; color: #fff; background: var(--ft-navy); padding: 0.85rem 1.6rem; border-radius: var(--radius-pill); transition: var(--transition-smooth); }
+  @media (max-width: 900px){ .index-row { grid-template-columns: 1fr; gap: 0.7rem; } .index-row .go { display:none; } .ed-head { grid-template-columns: 1fr; gap: 0.6rem; } }
+</style>
 </head>
+<body data-lang="en">
 
-<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+    <ul class="nav-links">
+      <li><a href="#belief"><span class="en">The Belief</span><span class="es">Nuestra creencia</span></a></li>
+      <li><a href="#products"><span class="en">Products</span><span class="es">Productos</span></a></li>
+      <li><a href="craft.html"><span class="en">Craft</span><span class="es">Craft</span></a></li>
+      <li><a href="portal.html"><span class="en">Portal</span><span class="es">Portal</span></a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en" class="active">EN</button>
+        <button data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+</nav>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <span class="logo-icon"><i class="fa-solid fa-microchip"></i></span>
-        <span class="logo-text">Faimly-T</span>
+<!-- HERO (B style, image background, new headline) -->
+<header class="hero hero-final" id="top">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="inner">
+      <span class="eyebrow is-ghost"><span class="en">The glass half full</span><span class="es">El vaso medio lleno</span></span>
+      <h1 style="margin-top:1.3rem;">
+        <span class="en">AI isn't replacing knowledge workers.<br /><span class="glow">It's expanding what needs to be built.</span></span>
+        <span class="es">La IA no está reemplazando a los trabajadores del conocimiento.<br /><span class="glow">Está expandiendo lo que se necesita construir.</span></span>
+      </h1>
+      <p class="sub">
+        <span class="en">When more people can build, more problems get solved.</span>
+        <span class="es">Cuando más personas pueden construir, más problemas se resuelven.</span>
+      </p>
+      <p class="lead">
+        <span class="en">The constraint shifts from "can we build it?" to "can we build it right?" — and that's exactly where we work. Faimly-T builds the tools and systems that democratize great software, so the people who make it all work become the most powerful version of themselves.</span>
+        <span class="es">La restricción cambia de "¿podemos construirlo?" a "¿podemos construirlo bien?", y es precisamente ahí donde intervenimos. Faimly-T desarrolla las herramientas y los sistemas que democratizan el software de alta calidad, para que las personas que hacen que todo funcione se conviertan en la versión más poderosa de sí mismas.</span>
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-cyan btn-lg" href="#belief">
+          <span class="en">How we see it</span><span class="es">Cómo lo vemos</span> <i class="fa-solid fa-arrow-right arrow"></i>
+        </a>
+        <a class="btn btn-ghost-light btn-lg" href="#products">
+          <span class="en">Explore our products</span><span class="es">Explorar nuestros productos</span>
+        </a>
+      </div>
+      <div class="hero-note">
+        <i class="fa-solid fa-bolt" style="color:var(--ft-cyan)"></i>
+        <span class="en">Craft is live — a governed senior team you pay only when you ship.</span>
+        <span class="es">Craft está activo — un equipo senior gobernado al que solo pagas cuando entregas.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- THE BELIEF (Direction A) -->
+<section class="section" id="belief">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow is-cyan"><span class="en">The belief that drives everything</span><span class="es">La creencia que lo impulsa todo</span></span></div>
+    <div class="manifesto reveal" style="max-width:860px;margin:0 auto;">
+      <p class="lede">
+        <span class="en">Almost everyone today — not just developers — carries some version of the same question: what happens to my work when AI can do more of it? It's a fair question. It deserves a real answer. Here is ours.</span>
+        <span class="es">Casi todo el mundo hoy —no solo los desarrolladores— se hace alguna versión de la misma pregunta: ¿qué pasará con mi trabajo cuando la IA pueda realizar gran parte de él? Es una pregunta justa y merece una respuesta real. Aquí está la nuestra.</span>
+      </p>
+      <p>
+        <span class="en">When the ability to build becomes more accessible, the number of things that get built doesn't stay the same. It explodes. More ideas become real. More systems come into existence. And every one of those systems needs someone who understands what makes it good — not just functional, but sound, secure, maintainable, built to last.</span>
+        <span class="es">Cuando la capacidad de construir se vuelve más accesible, la cantidad de cosas que se construyen no se mantiene igual. Explota. Más ideas se hacen realidad. Más sistemas cobran vida. Y cada uno de esos sistemas necesita a alguien que entienda qué lo hace bueno —no solo funcional, sino sólido, seguro, mantenible y construido para durar.</span>
+      </p>
+      <p class="bigquote">
+        <span class="en">AI doesn't diminish what humans bring to their work. It <span class="accent">expands the surface of everything that needs to be done</span> — and makes the people who do it well more essential than ever.</span>
+        <span class="es">La IA no disminuye lo que los humanos aportan a su trabajo. <span class="accent">Expande la superficie de todo lo que debe hacerse</span> —y hace que las personas que lo hacen bien sean más esenciales que nunca.</span>
+      </p>
+      <p>
+        <span class="en">For decades, engineers have known what great looks like: clean architecture, security by design, proper documentation, systems that hold up under pressure. AI absorbs the coordination cost that made the right version unaffordable. For the first time, the version you always knew you should build is the version you can actually ship.</span>
+        <span class="es">Durante décadas, los ingenieros han sabido cómo se ve un gran software: arquitectura limpia, seguridad por diseño, documentación adecuada, sistemas que resisten bajo presión. La IA absorbe el costo de coordinación que hacía inasequible la versión correcta. Por primera vez, la versión que siempre supiste que debías construir es la versión que realmente puedes entregar.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THE PRODUCTS (Direction C) -->
+<section class="section section--alt" id="products">
+  <div class="container wide">
+    <div class="ed-head">
+      <div class="idx"><span class="en">Our Products</span><span class="es">Nuestros Productos</span></div>
+      <div class="ttl">
+        <h2>
+          <span class="en">Five ways we amplify what you can build.</span>
+          <span class="es">Cinco formas en que amplificamos lo que puedes construir.</span>
+        </h2>
+        <p>
+          <span class="en">Every product is a different layer of the same superpower — humans, made more capable by AI.</span>
+          <span class="es">Cada producto es una capa diferente del mismo superpoder: los seres humanos, potenciados por la IA.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Flagship Craft — clickable entry to the Craft page -->
+    <a class="flagship reveal" id="craft" href="craft.html" style="margin-bottom:2.5rem;">
+      <div class="flagship-body">
+        <span class="eyebrow is-green">
+          <span class="en">Flagship · Available now — US &amp; LatAm</span>
+          <span class="es">Insignia · Disponible ahora — EE. UU. y LatAm</span>
+        </span>
+        <h3>
+          <span class="en">The Craft product</span>
+          <span class="es">El producto Craft</span>
+        </h3>
+        <p>
+          <span class="en">Craft is our governed software-delivery system. Your team builds on their own AI tools. We run the release gate: full DDD alignment, SOLID architecture review, security scan, UX quality check, documentation — applied to every release, by default.</span>
+          <span class="es">Craft es nuestro sistema de entrega de software gobernado. Tu equipo construye usando sus propias herramientas de IA. Nosotros ejecutamos el filtro de entrega: alineación completa de DDD, revisión de arquitectura SOLID, escaneo de seguridad, control de calidad de UX y documentación; todo esto aplicado a cada lanzamiento por defecto.</span>
+        </p>
+        <div class="flagship-pull">
+          <span class="en">"We're not helping teams ship faster. We're helping them finally ship the version they always knew they should build."</span>
+          <span class="es">"No estamos ayudando a los equipos a entregar más rápido. Los estamos ayudando a entregar finalmente la versión que siempre supieron que debían construir."</span>
+        </div>
+        <span class="flag-cta">
+          <span class="en">Explore Craft</span><span class="es">Explorar Craft</span> <i class="fa-solid fa-arrow-right arrow"></i>
+        </span>
+      </div>
+      <div class="flagship-visual ft-dot-grid"><img src="assets/illustrations/robot-hand.png" alt="Craft governed delivery" /></div>
+    </a>
+
+    <div class="index-list reveal">
+      <a class="index-row" href="codebrains.html">
+        <div class="ix">02</div>
+        <div class="nm">
+          <span class="meta">
+            <span class="en">Intelligence layer · In progress</span>
+            <span class="es">Capa de inteligencia · En desarrollo</span>
+          </span>
+          <h3>CODE Brains</h3>
+        </div>
+        <div class="ds">
+          <span class="en">The AI that thinks like your senior engineer — the reasoning, patterns, and judgment of a senior architect, embedded in every developer's workflow. What we're building next.</span>
+          <span class="es">La IA que piensa como tu ingeniero senior —el razonamiento, los patrones y el criterio de un arquitecto senior, integrados en el flujo de trabajo de cada desarrollador. Nuestro próximo desarrollo.</span>
+        </div>
+        <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
       </a>
-      <div class="nav-links-wrapper">
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#cases">Success Cases</a></li>
-          <li><a href="#faq">FAQ</a></li>
+      
+      <a class="index-row" href="javascript:void(0)" data-coming-soon="Clara">
+        <div class="ix">03</div>
+        <div class="nm">
+          <span class="meta">
+            <span class="en">Building now · Hiring platform</span>
+            <span class="es">Construyendo ahora · Plataforma de contratación</span>
+          </span>
+          <h3>Clara</h3>
+        </div>
+        <div class="ds">
+          <span class="en">Hiring, reimagined for the AI era — AI woven through the entire hiring journey, built to the Craft standard.</span>
+          <span class="es">Contratación, reimaginada para la era de la IA —IA integrada en todo el proceso de contratación, construida bajo el estándar Craft.</span>
+          <span class="partner">
+            <i class="fa-solid fa-handshake"></i>
+            <span class="en">In partnership with Jidoh Estrategia</span>
+            <span class="es">En colaboración con Jidoh Estrategia</span>
+          </span>
+        </div>
+        <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      
+      <a class="index-row" href="javascript:void(0)" data-coming-soon="Catch">
+        <div class="ix">04</div>
+        <div class="nm">
+          <span class="meta">
+            <span class="en">Building now · Scholarships</span>
+            <span class="es">Construyendo ahora · Becas</span>
+          </span>
+          <h3>Catch</h3>
+        </div>
+        <div class="ds">
+          <span class="en">Helps students in LatAm — starting in Colombia — find and win US scholarships, with AI guiding every step of the journey.</span>
+          <span class="es">Ayuda a estudiantes en LatAm —comenzando en Colombia— a encontrar y ganar becas en EE. UU., con la IA guiando cada paso del camino.</span>
+          <span class="partner">
+            <i class="fa-solid fa-handshake"></i>
+            <span class="en">In deep partnership with Raad</span>
+            <span class="es">En estrecha colaboración con Raad</span>
+          </span>
+        </div>
+        <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      
+      <a class="index-row" href="portal.html">
+        <div class="ix">05</div>
+        <div class="nm">
+          <span class="meta">
+            <span class="en">Service · Consultancy &amp; Training</span>
+            <span class="es">Servicio · Consultoría y Formación</span>
+          </span>
+          <h3><span class="en">The Portal</span><span class="es">El Portal</span></h3>
+        </div>
+        <div class="ds">
+          <span class="en">AI architecture, strategy, and team fluency — frameworks, analysis, and hands-on programs. English &amp; Spanish.</span>
+          <span class="es">Arquitectura de IA, estrategia y fluidez de equipo —frameworks, análisis y programas prácticos. Inglés y español.</span>
+        </div>
+        <span class="go"><i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / TRACKS -->
+<footer class="footer" id="contact">
+  <div class="container wide">
+    <div class="section-head" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:var(--fs-h2)">
+        <span class="en">Here's where it happens.</span>
+        <span class="es">Aquí es donde sucede.</span>
+      </h2>
+    </div>
+    <div class="tracks">
+      <div class="track reveal">
+        <span class="kicker"><span class="en">For builders</span><span class="es">Para constructores</span></span>
+        <h4>
+          <span class="en">Ship software that's actually built right.</span>
+          <span class="es">Entrega software que realmente esté bien construido.</span>
+        </h4>
+        <p>
+          <span class="en">Start with Craft — your team's first governed release, built to the standard you always knew was right.</span>
+          <span class="es">Comienza con Craft — el primer lanzamiento gobernado de tu equipo, construido bajo el estándar que siempre supiste que era el correcto.</span>
+        </p>
+        <a class="btn btn-primary" href="mailto:ventas@faimly-t.com?subject=Start%20with%20Craft">
+          <span class="en">Get started with Craft</span><span class="es">Comenzar con Craft</span> <i class="fa-solid fa-arrow-right arrow"></i>
+        </a>
+      </div>
+      <div class="track reveal">
+        <span class="kicker"><span class="en">For knowledge workers</span><span class="es">Para trabajadores del conocimiento</span></span>
+        <h4>
+          <span class="en">Your craft matters more, not less.</span>
+          <span class="es">Tu especialidad importa más, no menos.</span>
+        </h4>
+        <p>
+          <span class="en">If you believe quality is not a luxury, we're building the place where that belief does the most important work it ever has.</span>
+          <span class="es">Si crees que la calidad no es un lujo, estamos construyendo el lugar donde esa creencia cobra más importancia que nunca.</span>
+        </p>
+        <a class="btn btn-outline" href="mailto:ventas@faimly-t.com?subject=Join%20the%20movement">
+          <span class="en">Join the movement</span><span class="es">Únete al movimiento</span> <i class="fa-solid fa-arrow-right arrow"></i>
+        </a>
+      </div>
+      <div class="track reveal">
+        <span class="kicker"><span class="en">For partners</span><span class="es">Para socios</span></span>
+        <h4>
+          <span class="en">Know businesses ready to build better?</span>
+          <span class="es">¿Conoces empresas listas para construir mejor?</span>
+        </h4>
+        <p>
+          <span class="en">Join our partner network and earn on every feature your clients ship.</span>
+          <span class="es">Únete a nuestra red de socios y gana con cada característica que entreguen tus clientes.</span>
+        </p>
+        <a class="btn btn-outline" href="mailto:ventas@faimly-t.com?subject=Become%20a%20partner">
+          <span class="en">Become a partner</span><span class="es">Conviértete en socio</span> <i class="fa-solid fa-arrow-right arrow"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+        <p>
+          <span class="en">AI-powered engineering for a world that's building more than ever before.</span>
+          <span class="es">Ingeniería potenciada por IA para un mundo que construye más que nunca.</span>
+        </p>
+        <div class="footer-contact"><i class="fa-solid fa-envelope"></i> <a href="mailto:ventas@faimly-t.com">ventas@faimly-t.com</a></div>
+      </div>
+      <div class="footer-col">
+        <h5><span class="en">Products</span><span class="es">Productos</span></h5>
+        <ul>
+          <li><a href="craft.html">Craft</a></li>
+          <li><a href="codebrains.html">CODE Brains</a></li>
+          <li><a href="javascript:void(0)" data-coming-soon="Clara">Clara</a></li>
+          <li><a href="javascript:void(0)" data-coming-soon="Catch">Catch</a></li>
+          <li><a href="portal.html">Portal</a></li>
         </ul>
       </div>
-      <div class="nav-actions">
-        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      <div class="footer-col">
+        <h5><span class="en">Company</span><span class="es">Compañía</span></h5>
+        <ul>
+          <li><a href="#belief"><span class="en">The Belief</span><span class="es">La Creencia</span></a></li>
+          <li><a href="#products"><span class="en">Partnerships</span><span class="es">Alianzas</span></a></li>
+        </ul>
       </div>
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero grid-dots-bg">
-    <div class="container hero-content">
-      <div class="hero-text-area">
-        <div class="badge">Next-Gen Intelligence</div>
-        <h1>We Build Software Powered By <span class="gradient-text">Artificial Intelligence</span></h1>
-        <p class="hero-subtitle">At Faimly-T, we translate complex AI capabilities into elegant, high-impact business solutions. From strategic consultancy to custom software systems, we bring the future to your operations today.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book Free AI Consultation</a>
-          <a href="#cases" class="btn btn-outline">Explore Success Cases</a>
-        </div>
-      </div>
-      
-      <!-- Interactive Chat Dashboard Mockup -->
-      <div class="hero-visual-area">
-        <div class="dashboard-mockup">
-          <!-- Mockup Sidebar -->
-          <div class="mock-sidebar">
-            <div class="mock-profile">
-              <div class="mock-avatar">FT</div>
-              <div class="mock-profile-name">Faimly-T AI</div>
-            </div>
-            <ul class="mock-menu">
-              <li class="mock-menu-item active">
-                <i class="fa-solid fa-comments"></i> Chat Assistant
-              </li>
-              <li class="mock-menu-item">
-                <i class="fa-solid fa-brain"></i> advisory-bot
-              </li>
-              <li class="mock-menu-item">
-                <i class="fa-solid fa-code"></i> ddd-architect
-              </li>
-              <li class="mock-menu-item">
-                <i class="fa-solid fa-circle-play"></i> test-runner
-              </li>
-            </ul>
-            <div class="mock-pinned">
-              <div class="mock-pinned-title">Active Pipelines</div>
-              <ul class="mock-pinned-items">
-                <li class="mock-pinned-item"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 0.4rem;"></i> DDD Bounded Core</li>
-                <li class="mock-pinned-item"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 0.4rem;"></i> RaaD Semantic Index</li>
-                <li class="mock-pinned-item"><i class="fa-solid fa-spinner" style="color: var(--color-primary); margin-right: 0.4rem;"></i> agent-orchestrator</li>
-              </ul>
-            </div>
-          </div>
-          
-          <!-- Mockup Chat Area -->
-          <div class="mock-chat-area">
-            <div class="mock-chat-header">
-              <div class="mock-chat-title">Chat <span style="font-weight: normal; color: var(--color-text-light); font-size: 0.85rem;">/ agent-orchestrator</span></div>
-              <div class="mock-chat-actions">
-                <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                <i class="fa-solid fa-gear"></i>
-                <i class="fa-solid fa-circle-up"></i>
-              </div>
-            </div>
-            <div class="mock-chat-messages">
-              <div class="mock-bubble mock-bubble-user">
-                How can we orchestrate custom Semantic Kernel agents inside a C# Clean DDD project?
-              </div>
-              <div class="mock-bubble mock-bubble-ai">
-                We design coordinated multi-agent pipelines utilizing Semantic Kernel to parse context and execute tasks. Our DDD templates decouple layers via CQRS:
-                <pre>FaimlyT.Domain (pure invariants)
-FaimlyT.Application (CQRS handlers)
-FaimlyT.Infrastructure (EF Core, MassTransit)</pre>
-                Would you like to review our production-ready RabbitMQ integration script?
-              </div>
-            </div>
-            <div class="mock-chat-input-area">
-              <div class="mock-chat-input">Type your message or ask about AI consulting...</div>
-              <div class="mock-chat-send">
-                <i class="fa-solid fa-arrow-up"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="footer-col">
+        <h5><span class="en">Get in touch</span><span class="es">Contacto</span></h5>
+        <ul>
+          <li><a href="mailto:ventas@faimly-t.com"><span class="en">Talk to us</span><span class="es">Hablemos</span></a></li>
+          <li><a href="mailto:ventas@faimly-t.com?subject=Become%20a%20partner"><span class="en">Become a partner</span><span class="es">Conviértete en socio</span></a></li>
+          <li><a href="mailto:ventas@faimly-t.com?subject=Join%20the%20movement"><span class="en">Join the movement</span><span class="es">Únete al movimiento</span></a></li>
+        </ul>
       </div>
     </div>
-  </header>
-
-  <!-- About / Overview -->
-  <section id="about" class="services-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge">Who We Are</span>
-        <h2 class="section-title">Architecting the Agentic Future</h2>
-        <p class="section-subtitle">We are a specialized software consultancy engineering high-performance systems integrated with large language models, custom agents, and production-ready architectures.</p>
-      </div>
+    <div class="footer-bottom">
+      <span>
+        <span class="en">© 2026 Faimly-T. AI-powered engineering.</span>
+        <span class="es">© 2026 Faimly-T. Ingeniería potenciada por IA.</span>
+      </span>
+      <span>
+        <span class="en">US · LatAm · Europe horizon</span>
+        <span class="es">Horizonte EE. UU. · LatAm · Europa</span>
+      </span>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- Services / Value Proposition (Made to fit your workflow style) -->
-  <section id="services" class="services-section" style="background-color: var(--color-bg-alt);">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Elevate Your Enterprise</h2>
-        <p class="section-subtitle">Tailored technology solutions engineered for efficiency, intelligence, and scale.</p>
-      </div>
-      
-      <div class="services-wrapper">
-        <!-- Left Side: Interactive Metrics Mockup -->
-        <div class="services-visual-mockup">
-          <div class="metrics-widget">
-            <div class="metrics-widget-header">
-              <span class="metrics-widget-title"><i class="fa-solid fa-chart-simple" style="color: var(--color-primary); margin-right: 0.5rem;"></i> System Efficiency</span>
-              <span class="metrics-widget-val">94.2%</span>
-            </div>
-            <div class="progress-arc-container">
-              <div class="progress-bar-placeholder">
-                <div class="progress-bar-fill"></div>
-              </div>
-              <span style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 0.5rem; font-weight: 500;">AI Optimization Capacity (Active)</span>
-            </div>
-            <div style="border-top: 1px solid var(--color-border); padding-top: 1rem; margin-top: 1rem; display: flex; justify-content: space-between; font-size: 0.8rem;">
-              <span>Code Velocity: <strong>+10x</strong></span>
-              <span>Domain Leaks: <strong>0.00%</strong></span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Right Side: 2x2 Services Grid -->
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-            <h3>AI Strategic Advisory</h3>
-            <p>We audit your existing workflows and identify high-value opportunities to integrate generative AI models, custom LLM agents, and semantic capabilities to boost developer and operator efficiency.</p>
-          </div>
-          <div class="service-card">
-            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
-            <h3>Custom Software Engineering</h3>
-            <p>High-performance web applications, specialized API integrations, and robust database layers designed from the ground up to support modern agentic capabilities.</p>
-          </div>
-          <div class="service-card">
-            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-            <h3>Multi-Agent Workflows</h3>
-            <p>Unlock automation at scale. We design and build coordinated multi-agent pipelines, custom Semantic Kernel plugins, and Clean DDD infrastructures that support asynchronous AI workflows.</p>
-          </div>
-          <div class="service-card" style="background-color: var(--color-primary-glow); border-color: rgba(52, 109, 219, 0.2);">
-            <div class="card-icon" style="background-color: #ffffff; color: var(--color-primary);"><i class="fa-solid fa-comments"></i></div>
-            <h3>Start Your Review</h3>
-            <p>Ready to introduce intelligent efficiency into your business workflows? Click here to schedule your free consultation with our team.</p>
-            <a href="#contact" class="news-link" style="margin-top: 1rem; font-size: 0.85rem;">Request Consultation <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Success Cases Section (Resource Center Style) -->
-  <section id="cases" class="news-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge">Featured Deployments</span>
-        <h2 class="section-title">Success Cases</h2>
-        <p class="section-subtitle">Explore real-world architectures and platforms we have built to empower AI-driven productivity.</p>
-      </div>
-      
-      <div class="news-grid">
-        <!-- Success Case 1: DDD Multi-Agents -->
-        <article class="news-card">
-          <div class="news-image-placeholder">
-            <i class="fa-solid fa-network-wired"></i>
-          </div>
-          <div class="news-content">
-            <div class="news-tags-row">
-              <span class="news-tag">Architecture</span>
-              <span class="news-date">C# DDD Template</span>
-            </div>
-            <h3>Multi-Agent DDD Clean Architecture</h3>
-            <p>A production-ready C# enterprise architecture pre-wired for Claude AI multi-agent developer workflows, using PostgreSQL, MassTransit + RabbitMQ, Redis, and a Next.js frontend.</p>
-            <a href="./success-cases/ddd-agents.html" class="news-link">View Case Details <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </article>
-
-        <!-- Success Case 2: RaaD AI Onboarding -->
-        <article class="news-card">
-          <div class="news-image-placeholder">
-            <i class="fa-solid fa-user-gear"></i>
-          </div>
-          <div class="news-content">
-            <div class="news-tags-row">
-              <span class="news-tag">Integrations</span>
-              <span class="news-date">RaaD Onboarding</span>
-            </div>
-            <h3>RaaD AI Agent Onboarding Platform</h3>
-            <p>An intelligent agent onboarding and cognitive pipeline builder utilizing Microsoft's Semantic Kernel to parse codebase context and orchestrate runtime task execution.</p>
-            <a href="./success-cases/raad-agents.html" class="news-link">View Case Details <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section (New collapsible accordions section) -->
-  <section id="faq" class="faq-section" style="background-color: var(--color-bg-alt);">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge">Learn More</span>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Find answers to common questions about Faimly-T's custom software development, AI integrations, and consultancy model.</p>
-      </div>
-      
-      <div class="faq-wrapper">
-        <!-- Left Side Info Card -->
-        <div class="faq-info-card">
-          <h3>Still have a question?</h3>
-          <p>If you have any further questions or need technical clarification regarding our architectures, our engineering team is ready to help.</p>
-          <a href="#contact" class="btn btn-primary">Get in Touch</a>
-        </div>
-        
-        <!-- Right Side Accordion List -->
-        <div class="faq-list">
-          <div class="faq-item active">
-            <button class="faq-trigger" type="button" aria-expanded="true">
-              <h4>What is an AI Strategic Advisory?</h4>
-              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="faq-panel">
-              <div class="faq-panel-content">
-                We audit your existing business operations and software workflows to identify high-impact areas where Large Language Models, custom agent pipelines, and semantic systems can eliminate manual overhead, boost developer throughput, and decrease operational defects.
-              </div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">
-              <h4>How do multi-agent workflows automate complex software tasks?</h4>
-              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="faq-panel">
-              <div class="faq-panel-content">
-                By designing coordinated pipelines utilizing orchestrators like Microsoft's Semantic Kernel or custom bus handlers, we decouple complex tasks into specialized sub-agent queries (e.g. database schema mapping, aggregate modeling, code generation, and test creation) that execute asynchronously and report back with validated code blocks.
-              </div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">
-              <h4>Why do you build AI platforms on Domain-Driven Design (DDD)?</h4>
-              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="faq-panel">
-              <div class="faq-panel-content">
-                Domain-Driven Design places the core business logic in a pure, isolated Domain Layer with zero external dependencies. This decoupling makes it incredibly easy for AI agents to write code. Since aggregates and business invariants are strictly structured, sub-agents achieve 10x higher code-generation accuracy compared to standard legacy structures.
-              </div>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">
-              <h4>How does the free 30-minute consultation work?</h4>
-              <span class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="faq-panel">
-              <div class="faq-panel-content">
-                Once you fill out the contact form below, we schedule a direct Google Meet call to discuss your current software workflows. We provide initial strategic guidance, identify low-hanging AI integration points, and formulate a high-level roadmap tailored for your business needs.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lead Capture Form Section -->
-  <section id="contact" class="contact-section">
-    <div class="container">
-      <div class="contact-wrapper">
-        <div class="contact-info">
-          <h2>Let's Engineer <br><span class="gradient-text">Your AI Strategy</span></h2>
-          <p>Fill out the form to request a free, 30-minute consultancy review. We will identify immediate pathways to introduce intelligent efficiency into your business.</p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <span class="item-icon"><i class="fa-solid fa-envelope"></i></span>
-              <div>
-                <h4>Direct Email</h4>
-                <p>info@faimly-t.com</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="item-icon"><i class="fa-solid fa-globe"></i></span>
-              <div>
-                <h4>GitHub Space</h4>
-                <p>github.com/Faimly-T</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="form-container">
-          <!-- Web3Forms Lead Intake Form -->
-          <form action="https://api.web3forms.com/submit" method="POST" id="lead-form">
-            <!-- Set access key from web3forms -->
-            <input type="hidden" name="access_key" value="e5d2d63e-eddf-4b93-8126-cbf1e52ccb01">
-            <input type="hidden" name="subject" value="New AI Lead Submission - Faimly-T">
-            <input type="checkbox" name="botcheck" id="botcheck" style="display: none;">
-
-            <div class="form-group">
-              <label for="lead-name">Name</label>
-              <input type="text" id="lead-name" name="name" required placeholder="e.g. Max Rodriguez">
-            </div>
-
-            <div class="form-group">
-              <label for="lead-email">Business Email</label>
-              <input type="email" id="lead-email" name="email" required placeholder="name@company.com">
-            </div>
-
-            <div class="form-group">
-              <label for="lead-company">Company Name</label>
-              <input type="text" id="lead-company" name="company" placeholder="e.g. Faimly-T Software">
-            </div>
-
-            <div class="form-group">
-              <label for="lead-message">Tell us about your needs</label>
-              <textarea id="lead-message" name="message" rows="4" required placeholder="How can AI help your workflow?"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block">Send Consultation Request</button>
-            <p class="form-note">By submitting, you agree to receive follow-up emails regarding your request.</p>
-          </form>
-
-          <div id="form-feedback" class="form-feedback">
-            <i class="fa-solid fa-circle-check"></i>
-            <h3>Message Sent!</h3>
-            <p>Thank you for reaching out. We will review your project details and contact you shortly.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <!-- Newsletter Banner Card -->
-      <div class="newsletter-card">
-        <div class="newsletter-text">
-          <h3>Join our newsletter</h3>
-          <p>Discover the features and architectural templates that will transform your engineering teams.</p>
-        </div>
-        <div class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address">
-          <button class="newsletter-btn" type="button"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
-      </div>
-      
-      <!-- Multi-column links -->
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="#" class="logo">
-            <span class="logo-icon"><i class="fa-solid fa-microchip"></i></span>
-            <span class="logo-text">Faimly-T</span>
-          </a>
-          <p>Empower your engineering teams with our comprehensive multi-agent templates and DDD software architectures.</p>
-          <div class="footer-dropdown">
-            ENG <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i>
-          </div>
-          <div class="social-links">
-            <a href="https://github.com/Faimly-T" target="_blank" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          </div>
-        </div>
-        
-        <div class="footer-nav-col">
-          <h4>Resources</h4>
-          <ul class="footer-nav-links">
-            <li><a href="./success-cases/ddd-agents.html">DDD C# Template</a></li>
-            <li><a href="./success-cases/raad-agents.html">Semantic Kernel Code</a></li>
-            <li><a href="https://github.com/Faimly-T" target="_blank">GitHub Space</a></li>
-            <li><a href="#">Documentation</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-nav-col">
-          <h4>Services</h4>
-          <ul class="footer-nav-links">
-            <li><a href="#services">AI Strategic Advisory</a></li>
-            <li><a href="#services">Custom Engineering</a></li>
-            <li><a href="#services">Multi-Agent Workflows</a></li>
-            <li><a href="#contact">Free Consultation</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-nav-col">
-          <h4>Company</h4>
-          <ul class="footer-nav-links">
-            <li><a href="#about">About Faimly-T</a></li>
-            <li><a href="#">Our Vision</a></li>
-            <li><a href="#cases">Success Cases</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Copyright bar -->
-      <div class="footer-bottom">
-        <p>Copyright © 2026 Faimly-T. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="redesign.js"></script>
+<script>
+  (function(){
+    var KEY='ft-portal-lang';
+    var saved = localStorage.getItem(KEY) || 'en';
+    function set(lang){
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang);
+      });
+      localStorage.setItem(KEY, lang);
+      window.dispatchEvent(new CustomEvent('lang-changed', { detail: lang }));
+    }
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.addEventListener('click', function(){ set(b.getAttribute('data-lang-btn')); });
+    });
+    set(saved);
+  })();
+</script>
 </body>
-
 </html>

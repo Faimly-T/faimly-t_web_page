@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title class="en">Catch — Win the US scholarship you didn't know was yours | Faimly-T</title>
+<title class="es">Catch — Gana la beca en EE. UU. que no sabías que era tuya | Faimly-T</title>
+<link rel="stylesheet" href="styles.css?v=1.0.1" />
+<link rel="stylesheet" href="redesign.css?v=1.0.1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  /* ============================================================
+     Catch — bespoke theme on the shared redesign base.
+     Scholarships for LatAm students. Warmer, human, hopeful.
+     Accent shifts from brand cyan to emerald (opportunity).
+     ============================================================ */
+  :root {
+    --catch: #0e9f6e;          /* emerald — opportunity / growth */
+    --catch-600: #057a55;
+    --catch-300: #84e1bc;
+    --catch-050: #def7ec;
+    --catch-line: rgba(255,255,255,0.1);
+  }
+
+  /* ---- Crumb ------------------------------------------------ */
+  .crumb { font-size: 0.82rem; color: var(--color-text-light); margin-bottom: 1.3rem; display: flex; align-items: center; gap: 0.55rem; }
+  .crumb a:hover { color: var(--catch-600); }
+  .crumb i { font-size: 0.6rem; }
+
+  /* Catch eyebrow uses the emerald accent */
+  .eyebrow.is-catch { color: var(--catch-600); background: var(--catch-050); border-color: rgba(14,159,110,0.2); }
+
+  /* ---- HERO ------------------------------------------------- */
+  .catch-hero { padding: 92px 0 96px; }
+  .catch-hero .hero-grid { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 3.4rem; align-items: center; }
+  .catch-hero h1 { font-size: clamp(2.5rem, 4.6vw, 3.7rem); line-height: 1.08; margin: 1.1rem 0 1.4rem; }
+  .catch-hero h1 .grad { background: linear-gradient(100deg, var(--ft-navy) 10%, var(--catch-600) 95%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .catch-hero .lead { font-size: 1.18rem; max-width: 540px; }
+  .hero-trust { margin-top: 2rem; display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; font-size: 0.84rem; color: var(--color-text-light); }
+  .hero-trust .pip { display: flex; align-items: center; gap: 0.5rem; }
+  .hero-trust .pip i { color: var(--catch); }
+  .partner-line { margin-top: 1.6rem; display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.86rem; color: var(--color-text-muted); background: var(--color-bg-card); border: 1px solid var(--color-border); padding: 0.55rem 1.1rem; border-radius: var(--radius-pill); }
+  .partner-line i { color: var(--catch-600); }
+  .partner-line b { color: var(--color-text-main); font-weight: 700; }
+
+  /* ---- Hero journey card (the product visual) --------------- */
+  .journey-card { background: linear-gradient(168deg, #003d2b 0%, var(--ft-navy-900) 100%); border-radius: var(--radius-card); padding: 1.6rem; box-shadow: var(--shadow-premium); position: relative; overflow: hidden; }
+  .journey-card .scan { position: absolute; inset: 0; background: radial-gradient(70% 55% at 80% 0%, rgba(14,159,110,0.3), transparent 70%); pointer-events: none; }
+  .journey-card .jc-top { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding-bottom: 1.1rem; border-bottom: 1px solid var(--catch-line); }
+  .journey-card .jc-title { display: flex; align-items: center; gap: 0.7rem; color: #fff; font-family: var(--font-title); font-weight: 700; font-size: 0.96rem; }
+  .journey-card .jc-title .av { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(140deg, var(--catch), var(--catch-600)); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.78rem; font-weight: 700; }
+  .journey-card .jc-title small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+  .journey-card .stage { font-family: var(--font-mono); font-size: 0.72rem; color: var(--catch-300); background: rgba(14,159,110,0.16); border: 1px solid rgba(14,159,110,0.3); padding: 0.28rem 0.6rem; border-radius: var(--radius-pill); }
+  .match-list { position: relative; z-index: 2; list-style: none; margin: 1.1rem 0; display: flex; flex-direction: column; gap: 0.55rem; }
+  .match-list li { display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-md); }
+  .match-list .ml-ic { width: 30px; height: 30px; border-radius: 8px; background: rgba(14,159,110,0.18); display: flex; align-items: center; justify-content: center; color: var(--catch-300); font-size: 0.78rem; flex-shrink: 0; }
+  .match-list .ml-body { flex-grow: 1; }
+  .match-list .ml-name { color: rgba(255,255,255,0.94); font-size: 0.88rem; font-weight: 600; }
+  .match-list .ml-sub { color: rgba(255,255,255,0.5); font-size: 0.72rem; }
+  .match-list .ml-fit { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--catch-300); }
+  .journey-foot { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; background: rgba(14,159,110,0.16); border: 1px solid rgba(14,159,110,0.3); border-radius: var(--radius-md); padding: 0.85rem 1.1rem; margin-top: 0.9rem; }
+  .journey-foot .jf-l { display: flex; align-items: center; gap: 0.6rem; color: #fff; font-weight: 600; font-size: 0.9rem; }
+  .journey-foot .jf-l i { color: var(--catch); }
+  .journey-foot .jf-r { font-family: var(--font-mono); font-size: 0.72rem; color: var(--catch-300); }
+  @media (max-width: 1024px){ .catch-hero .hero-grid { grid-template-columns: 1fr; gap: 2.6rem; } }
+
+  /* ---- Gap band --------------------------------------------- */
+  .gap-band { background: var(--ft-navy-900); color: #fff; position: relative; overflow: hidden; }
+  .gap-band .glow { position: absolute; inset: 0; background: radial-gradient(50% 70% at 15% 10%, rgba(14,159,110,0.2), transparent 65%); }
+  .gap-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 3.4rem; align-items: center; }
+  .gap-copy h2 { color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.14; }
+  .gap-copy h2 .accent { color: var(--catch-300); }
+  .gap-copy p { color: rgba(255,255,255,0.74); font-size: var(--fs-lead); margin-top: 1.2rem; max-width: 460px; }
+  .gap-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .gap-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-card); padding: 1.9rem 1.7rem; }
+  .gap-stat .big { font-family: var(--font-title); font-weight: 800; font-size: clamp(2.4rem, 4.6vw, 3.2rem); letter-spacing: -0.03em; line-height: 1; color: #fff; }
+  .gap-stat .big .u { color: var(--catch-300); font-size: 0.5em; vertical-align: 0.18em; margin-left: 0.05em; }
+  .gap-stat p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 0.7rem; line-height: 1.5; }
+  @media (max-width: 1024px){ .gap-grid { grid-template-columns: 1fr; gap: 2.4rem; } }
+  @media (max-width: 560px){ .gap-stats { grid-template-columns: 1fr; } }
+
+  /* ---- Manifesto -------------------------------------------- */
+  .catch-manifesto { max-width: 880px; margin: 0 auto; text-align: center; }
+  .catch-manifesto .kicker { margin-bottom: 1.4rem; }
+  .catch-manifesto .big { font-family: var(--font-title); font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.28; letter-spacing: -0.02em; color: var(--color-text-main); }
+  .catch-manifesto .big .accent { color: var(--catch-600); }
+  .catch-manifesto .sub { font-size: var(--fs-lead); color: var(--color-text-muted); max-width: 640px; margin: 1.6rem auto 0; }
+  .neg-row { display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap; margin-top: 2.2rem; }
+  .neg-chip { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 500; color: var(--color-text-light); background: var(--color-bg-card); border: 1px solid var(--color-border); padding: 0.55rem 1.05rem; border-radius: var(--radius-pill); }
+  .neg-chip i { color: var(--ft-danger); font-size: 0.78rem; }
+  .neg-chip.is-yes { color: var(--color-text-main); border-color: var(--catch-300); background: var(--catch-050); }
+  .neg-chip.is-yes i { color: var(--catch-600); }
+
+  /* ---- How it works (3 steps) ------------------------------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  .step { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 2rem 1.9rem; position: relative; transition: var(--transition-smooth); }
+  .step:hover { transform: var(--lift-card); box-shadow: var(--shadow-lg); border-color: var(--color-border-hover); }
+  .step .sn { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--catch-600); font-weight: 700; }
+  .step .si { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--catch-050); color: var(--catch-600); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; margin: 1rem 0 1.1rem; }
+  .step h4 { font-size: 1.18rem; margin-bottom: 0.5rem; }
+  .step p { font-size: 0.92rem; }
+  @media (max-width: 900px){ .steps { grid-template-columns: 1fr; } }
+
+  /* ---- Journey grid (the 6 steps Catch guides) -------------- */
+  .checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+  .check { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 1.9rem; transition: var(--transition-smooth); position: relative; }
+  .check:hover { border-color: var(--color-border-hover); box-shadow: var(--shadow-md); transform: var(--lift-card); }
+  .check .cstep { position: absolute; top: 1.5rem; right: 1.6rem; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--catch-300); }
+  .check .ci { width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--catch-050); display: flex; align-items: center; justify-content: center; color: var(--catch-600); font-size: 1.1rem; margin-bottom: 1.1rem; }
+  .check h4 { font-size: 1.06rem; margin-bottom: 0.45rem; }
+  .check p { font-size: 0.88rem; }
+  @media (max-width: 900px){ .checks { grid-template-columns: 1fr; } }
+
+  /* ---- Pull band -------------------------------------------- */
+  .pull-band { background: var(--ft-navy); color: #fff; position: relative; overflow: hidden; }
+  .pull-band .glow { position: absolute; inset: 0; background: radial-gradient(55% 90% at 50% 0%, rgba(14,159,110,0.26), transparent 70%); }
+  .pull-band .q { max-width: 920px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+  .pull-band .q p { font-family: var(--font-title); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.3; letter-spacing: -0.02em; color: #fff; }
+  .pull-band .q .accent { color: var(--catch-300); }
+
+  /* ---- Built-with / credibility ----------------------------- */
+  .built { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+  .built-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 2.4rem; transition: var(--transition-smooth); }
+  .built-card:hover { box-shadow: var(--shadow-md); transform: var(--lift-card); }
+  .built-card .bi { width: 50px; height: 50px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.3rem; }
+  .built-card.is-partner .bi { background: var(--catch-050); color: var(--catch-600); }
+  .built-card.is-standard .bi { background: var(--ft-cyan-050); color: var(--ft-cyan-600); }
+  .built-card h3 { font-size: 1.3rem; margin-bottom: 0.7rem; }
+  .built-card p { font-size: 0.95rem; }
+  .built-card a { font-weight: 600; font-size: 0.9rem; color: var(--ft-cyan-600); display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.1rem; }
+  .built-card a i { font-size: 0.78rem; transition: var(--transition-smooth); }
+  .built-card a:hover i { transform: translateX(3px); }
+  @media (max-width: 760px){ .built { grid-template-columns: 1fr; } }
+
+  /* ---- Coming-soon CTA -------------------------------------- */
+  .access { max-width: 880px; margin: 0 auto; }
+  .access-card { background: linear-gradient(168deg, #003d2b 0%, var(--ft-navy-900) 100%); border-radius: var(--radius-card); padding: 3.2rem; position: relative; overflow: hidden; text-align: center; box-shadow: var(--shadow-premium); }
+  .access-card .aglow { position: absolute; inset: 0; background: radial-gradient(60% 80% at 50% 0%, rgba(14,159,110,0.3), transparent 70%); }
+  .access-card .inner { position: relative; z-index: 2; }
+  .access-card h2 { color: #fff; font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin: 1.2rem 0 1rem; }
+  .access-card p { color: rgba(255,255,255,0.78); font-size: var(--fs-lead); max-width: 560px; margin: 0 auto 2rem; }
+  .access-card .btn-emerald { background: var(--catch); color: #fff; }
+  .access-card .btn-emerald:hover { background: var(--catch-600); transform: var(--lift-hover); }
+  .access-note { margin-top: 1.3rem; font-size: 0.82rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
+</style>
+</head>
+<body data-lang="en">
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+    <ul class="nav-links">
+      <li><a href="#problem"><span class="en">The gap</span><span class="es">Brecha</span></a></li>
+      <li><a href="#how"><span class="en">How it works</span><span class="es">Proceso</span></a></li>
+      <li><a href="#journey"><span class="en">The journey</span><span class="es">Viaje</span></a></li>
+      <li><a href="#built"><span class="en">Built with Raad</span><span class="es">Alianza</span></a></li>
+      <li><a href="#access"><span class="en">Early access</span><span class="es">Acceso</span></a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en" class="active">EN</button>
+        <button data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero catch-hero ft-dot-grid" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="crumb">
+          <a href="index.html"><span class="en">Products</span><span class="es">Productos</span></a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span>Catch</span>
+        </div>
+        <span class="eyebrow is-catch">
+          <i class="fa-solid fa-circle" style="font-size:0.45rem"></i>
+          <span class="en">Building now · LatAm, starting in Colombia</span>
+          <span class="es">Construyendo ahora · LatAm, comenzando en Colombia</span>
+        </span>
+        <h1>
+          <span class="en">The US scholarship is real.<br /><span class="grad">Catch helps you win it.</span></span>
+          <span class="es">La beca en EE. UU. es real.<br /><span class="grad">Catch te ayuda a ganarla.</span></span>
+        </h1>
+        <p class="lead">
+          <span class="en">Talented students across Latin America miss scholarships they're qualified for — not for lack of merit, but because no one shows them the way. Catch is an AI guide for the whole journey: it finds the scholarships that fit you, then walks you to "accepted," step by step.</span>
+          <span class="es">Estudiantes talentosos en toda América Latina pierden becas para las cuales están calificados —no por falta de mérito, sino porque nadie les muestra el camino. Catch es una guía de IA para todo el camino: encuentra las becas que se adaptan a ti y te acompaña hasta lograr la admisión, paso a paso.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#access">
+            <span class="en">Get early access</span><span class="es">Obtener acceso anticipado</span> <i class="fa-solid fa-arrow-right arrow"></i>
+          </a>
+          <a class="btn btn-outline btn-lg" href="#how">
+            <span class="en">See how it works</span><span class="es">Ver cómo funciona</span>
+          </a>
+        </div>
+        <div class="partner-line">
+          <i class="fa-solid fa-handshake"></i>
+          <span class="en">In deep partnership with <b>Raad</b></span>
+          <span class="es">En estrecha colaboración con <b>Raad</b></span>
+        </div>
+        <div class="hero-trust">
+          <span class="pip"><i class="fa-solid fa-circle-check"></i> <span class="en">Built for LatAm students</span><span class="es">Construido para estudiantes de LatAm</span></span>
+          <span class="pip"><i class="fa-solid fa-circle-check"></i> <span class="en">Español &amp; English</span><span class="es">Español e inglés</span></span>
+          <span class="pip"><i class="fa-solid fa-circle-check"></i> <span class="en">Guidance, not just listings</span><span class="es">Orientación, no solo listados</span></span>
+        </div>
+      </div>
+
+      <!-- The product visual: a scholarship journey -->
+      <div class="journey-card reveal">
+        <div class="scan"></div>
+        <div class="jc-top">
+          <div class="jc-title"><span class="av">VS</span><span>Valentina S.<small><span class="en">Medellín · 11th grade · STEM</span><span class="es">Medellín · 11° grado · STEM</span></small></span></div>
+          <span class="stage"><span class="en">3 matches</span><span class="es">3 coincidencias</span></span>
+        </div>
+        <ul class="match-list">
+          <li>
+            <span class="ml-ic"><i class="fa-solid fa-graduation-cap"></i></span>
+            <span class="ml-body">
+              <span class="ml-name"><span class="en">Engineering Merit Award</span><span class="es">Premio al Mérito en Ingeniería</span></span>
+              <span class="ml-sub"><span class="en">Full tuition · deadline in 41 days</span><span class="es">Matrícula completa · plazo en 41 días</span></span>
+            </span>
+            <span class="ml-fit">96% fit</span>
+          </li>
+          <li>
+            <span class="ml-ic"><i class="fa-solid fa-globe"></i></span>
+            <span class="ml-body">
+              <span class="ml-name"><span class="en">Global Futures Scholarship</span><span class="es">Beca Global Futures</span></span>
+              <span class="ml-sub"><span class="en">Tuition + stipend · essay due soon</span><span class="es">Matrícula + estipendio · ensayo vence pronto</span></span>
+            </span>
+            <span class="ml-fit">91% fit</span>
+          </li>
+          <li>
+            <span class="ml-ic"><i class="fa-solid fa-microscope"></i></span>
+            <span class="ml-body">
+              <span class="ml-name"><span class="en">STEM Leaders Grant</span><span class="es">Subvención para Líderes STEM</span></span>
+              <span class="ml-sub"><span class="en">$20k/yr · recommendation needed</span><span class="es">$20k/año · recomendación requerida</span></span>
+            </span>
+            <span class="ml-fit">88% fit</span>
+          </li>
+        </ul>
+        <div class="journey-foot">
+          <span class="jf-l">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span class="en">Next step ready</span><span class="es">Próximo paso listo</span>
+          </span>
+          <span class="jf-r"><span class="en">draft your essay →</span><span class="es">redacta tu ensayo →</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== THE GAP ===================== -->
+<section class="gap-band section" id="problem">
+  <div class="glow"></div>
+  <div class="container wide">
+    <div class="gap-grid">
+      <div class="gap-copy reveal">
+        <span class="eyebrow is-ghost"><span class="en">Why Catch exists</span><span class="es">Por qué existe Catch</span></span>
+        <h2 style="margin-top:1.1rem;">
+          <span class="en">The scholarships exist.<br />The <span class="accent">map doesn't.</span></span>
+          <span class="es">Las becas existen.<br />El <span class="accent">mapa no.</span></span>
+        </h2>
+        <p>
+          <span class="en">Every year, US universities give away aid that LatAm students are perfectly qualified for. The barrier isn't talent — it's a process that's scattered, in another language, full of unwritten rules, and built for families who already know how it works.</span>
+          <span class="es">Cada año, las universidades de EE. UU. otorgan ayudas para las cuales los estudiantes latinoamericanos están perfectamente calificados. La barrera no es el talento —es un proceso disperso, en otro idioma, lleno de reglas no escritas y diseñado para familias que ya saben cómo funciona.</span>
+        </p>
+      </div>
+      <div class="gap-stats reveal">
+        <div class="gap-stat">
+          <div class="big">$3.8<span class="u">B</span></div>
+          <p>
+            <span class="en">in US scholarship aid goes unclaimed every year — much of it never reaches the students who'd qualify.</span>
+            <span class="es">en fondos de becas de EE. UU. queda sin reclamar cada año —gran parte nunca llega a los estudiantes que calificarían.</span>
+          </p>
+        </div>
+        <div class="gap-stat">
+          <div class="big"><span class="en">1 guide</span><span class="es">1 guía</span></div>
+          <p>
+            <span class="en">is all it takes to change an outcome. Most LatAm applicants never get one. Catch is built to be that guide, at scale.</span>
+            <span class="es">es todo lo que se necesita para cambiar un resultado. La mayoría de los solicitantes de LatAm nunca cuentan con uno. Catch está diseñado para ser esa guía, a escala.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT IT IS / MANIFESTO ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="catch-manifesto reveal">
+      <span class="eyebrow kicker is-catch"><span class="en">What Catch is</span><span class="es">Qué es Catch</span></span>
+      <p class="big">
+        <span class="en">A student with the right mentor doesn't just find scholarships — they win them. Catch is that mentor, powered by AI and available to everyone: it <span class="accent">finds the right opportunities, then guides every step</span> from first essay to acceptance letter.</span>
+        <span class="es">Un estudiante con el mentor adecuado no solo encuentra becas — las gana. Catch es ese mentor, potenciado por IA y disponible para todos: <span class="accent">encuentra las oportunidades adecuadas y luego guía cada paso</span> desde el primer ensayo hasta la carta de aceptación.</span>
+      </p>
+      <p class="sub">
+        <span class="en">Not a database of links you have to figure out alone. A guide that knows your story, knows the process, and stays with you the whole way.</span>
+        <span class="es">No es una base de datos de enlaces que tienes que descifrar solo. Es una guía que conoce tu historia, conoce el proceso y te acompaña durante todo el camino.</span>
+      </p>
+      <div class="neg-row">
+        <span class="neg-chip"><i class="fa-solid fa-xmark"></i> <span class="en">Not a list of links</span><span class="es">No es una lista de enlaces</span></span>
+        <span class="neg-chip"><i class="fa-solid fa-xmark"></i> <span class="en">Not a paywall on opportunity</span><span class="es">Sin barreras de pago para la oportunidad</span></span>
+        <span class="neg-chip is-yes"><i class="fa-solid fa-check"></i> <span class="en">A guide for the whole journey</span><span class="es">Una guía para todo el viaje</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="section section--alt" id="how">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow is-catch"><span class="en">Catch in three steps</span><span class="es">Catch en tres pasos</span></span>
+      <h2>
+        <span class="en">Tell it your story. It does the rest with you.</span>
+        <span class="es">Cuéntale tu historia. Hace el resto contigo.</span>
+      </h2>
+      <p>
+        <span class="en">From the first conversation to the day you say yes to an offer.</span>
+        <span class="es">Desde la primera conversación hasta el día en que le dices sí a una oferta.</span>
+      </p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="sn"><span class="en">STEP 01</span><span class="es">PASO 01</span></div>
+        <div class="si"><i class="fa-solid fa-user-pen"></i></div>
+        <h4><span class="en">Tell Catch about you</span><span class="es">Cuéntale a Catch sobre ti</span></h4>
+        <p>
+          <span class="en">Your grades, your interests, your story, what you can afford. A short, friendly conversation — in the language you're most comfortable in.</span>
+          <span class="es">Tus notas, tus intereses, tu historia, tu presupuesto. Una conversación corta y amigable — en el idioma en el que te sientas más cómodo.</span>
+        </p>
+      </div>
+      <div class="step">
+        <div class="sn"><span class="en">STEP 02</span><span class="es">PASO 02</span></div>
+        <div class="si"><i class="fa-solid fa-bullseye"></i></div>
+        <h4><span class="en">It finds your matches</span><span class="es">Encuentra tus coincidencias</span></h4>
+        <p>
+          <span class="en">Catch ranks the scholarships you can actually win — by fit, by odds, by deadline — and explains why each one is worth your time.</span>
+          <span class="es">Catch clasifica las becas que realmente puedes ganar — por compatibilidad, probabilidad, fecha límite — y explica por qué cada una vale tu tiempo.</span>
+        </p>
+      </div>
+      <div class="step">
+        <div class="sn"><span class="en">STEP 03</span><span class="es">PASO 03</span></div>
+        <div class="si"><i class="fa-solid fa-flag-checkered"></i></div>
+        <h4><span class="en">It guides you to "yes"</span><span class="es">Te guía hacia el "sí"</span></h4>
+        <p>
+          <span class="en">Essays, deadlines, recommendations, applications — Catch walks you through each one, so nothing slips and nothing scares you off.</span>
+          <span class="es">Ensayos, plazos, recomendaciones, solicitudes — Catch te guía a través de cada uno, para que nada se te pase y nada te asuste.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE JOURNEY ===================== -->
+<section class="section" id="journey">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow is-catch"><span class="en">The whole journey</span><span class="es">Todo el viaje</span></span>
+      <h2>
+        <span class="en">An AI guide at every step that usually stops people.</span>
+        <span class="es">Una guía de IA en cada paso que suele detener a las personas.</span>
+      </h2>
+      <p>
+        <span class="en">The places students get stuck, lost, or give up — Catch is there for all of them.</span>
+        <span class="es">Los lugares donde los estudiantes se atascan, se pierden o se rinden — Catch está allí para todos ellos.</span>
+      </p>
+    </div>
+    <div class="checks reveal">
+      <div class="check">
+        <span class="cstep">01</span>
+        <div class="ci"><i class="fa-solid fa-bullseye"></i></div>
+        <h4><span class="en">Find your matches</span><span class="es">Encuentra tus coincidencias</span></h4>
+        <p>
+          <span class="en">Scholarships ranked by how well they fit your profile, your goals, and your real chances of winning.</span>
+          <span class="es">Becas clasificadas según qué tan bien se adapten a tu perfil, tus metas y tus posibilidades reales de ganar.</span>
+        </p>
+      </div>
+      <div class="check">
+        <span class="cstep">02</span>
+        <div class="ci"><i class="fa-solid fa-circle-check"></i></div>
+        <h4><span class="en">Check eligibility</span><span class="es">Verificar elegibilidad</span></h4>
+        <p>
+          <span class="en">The fine print, decoded — so you spend your energy only on the awards you can actually qualify for.</span>
+          <span class="es">La letra pequeña, descifrada — para que gastes tu energía solo en las becas para las que realmente calificas.</span>
+        </p>
+      </div>
+      <div class="check">
+        <span class="cstep">03</span>
+        <div class="ci"><i class="fa-solid fa-feather-pointed"></i></div>
+        <h4><span class="en">Write the essay</span><span class="es">Redactar el ensayo</span></h4>
+        <p>
+          <span class="en">Catch helps you tell your story in your own voice — coaching, not ghostwriting — so it reads like you at your best.</span>
+          <span class="es">Catch te ayuda a contar tu historia con tu propia voz — orientando, no escribiendo por ti — para que se lea como tú en tu mejor momento.</span>
+        </p>
+      </div>
+      <div class="check">
+        <span class="cstep">04</span>
+        <div class="ci"><i class="fa-solid fa-calendar-check"></i></div>
+        <h4><span class="en">Never miss a deadline</span><span class="es">Nunca pierdas un plazo</span></h4>
+        <p>
+          <span class="en">Every date tracked, every reminder timed — the silent reason most strong applications never get sent.</span>
+          <span class="es">Cada fecha rastreada, cada recordatorio programado —la razón silenciosa por la cual la mayoría de las candidaturas más sólidas nunca se envían.</span>
+        </p>
+      </div>
+      <div class="check">
+        <span class="cstep">05</span>
+        <div class="ci"><i class="fa-solid fa-file-lines"></i></div>
+        <h4><span class="en">Submit with confidence</span><span class="es">Enviar con confianza</span></h4>
+        <p>
+          <span class="en">Forms, documents, recommendation requests — organized and checked before anything goes out the door.</span>
+          <span class="es">Formularios, documentos y cartas de recomendación: todo organizado y verificado antes del envío.</span>
+        </p>
+      </div>
+      <div class="check">
+        <span class="cstep">06</span>
+        <div class="ci"><i class="fa-solid fa-comments"></i></div>
+        <h4><span class="en">Prepare for the interview</span><span class="es">Preparar para la entrevista</span></h4>
+        <p>
+          <span class="en">Practice the questions that matter, in a low-stakes way, until walking in feels like something you've done before.</span>
+          <span class="es">Practica las preguntas importantes, de forma relajada, hasta que entrar se sienta como algo que ya has hecho antes.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PULL QUOTE ===================== -->
+<section class="section--tight pull-band">
+  <div class="container" style="padding-top:5rem;padding-bottom:5rem;">
+    <div class="glow"></div>
+    <div class="q reveal">
+      <p>
+        <span class="en">"The difference between the student who wins and the one who doesn't is rarely talent. <span class="accent">It's having someone who knows the way.</span>"</span>
+        <span class="es">"La diferencia entre el estudiante que gana y el que no, rara vez es el talento. <span class="accent">Es tener a alguien que conozca el camino.</span>"</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BUILT WITH ===================== -->
+<section class="section section--alt" id="built">
+  <div class="container wide">
+    <div class="section-head left value-head" style="max-width:720px;">
+      <span class="eyebrow is-catch"><span class="en">Who's behind it</span><span class="es">Quién está detrás</span></span>
+      <h2>
+        <span class="en">Built with people who know the path — and held to the Craft standard.</span>
+        <span class="es">Construido con personas que conocen el camino — y bajo el estándar Craft.</span>
+      </h2>
+      <p>
+        <span class="en">Catch isn't a side project. It's built in deep partnership with Raad, and engineered to the same governed standard as everything Faimly-T ships.</span>
+        <span class="es">Catch no es un proyecto secundario. Está construido en estrecha colaboración con Raad y diseñado bajo el mismo estándar gobernado de todo lo que entrega Faimly-T.</span>
+      </p>
+    </div>
+    <div class="built reveal">
+      <div class="built-card is-partner">
+        <div class="bi"><i class="fa-solid fa-handshake"></i></div>
+        <h3><span class="en">In partnership with Raad</span><span class="es">En colaboración con Raad</span></h3>
+        <p>
+          <span class="en">Raad brings the on-the-ground understanding of LatAm students and the scholarship landscape. Catch turns that understanding into a guide every student can carry in their pocket.</span>
+          <span class="es">Raad aporta la experiencia directa con los estudiantes de LatAm y el panorama de las becas. Catch convierte esa comprensión en una guía que cada estudiante puede llevar en su bolsillo.</span>
+        </p>
+      </div>
+      <div class="built-card is-standard">
+        <div class="bi"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3><span class="en">Built to the Craft standard</span><span class="es">Construido bajo el estándar Craft</span></h3>
+        <p>
+          <span class="en">Catch is built on Craft — the same governed release gate behind everything we make. Secure, architected, and reliable, because a student's future is not a place to cut corners.</span>
+          <span class="es">Catch está construido sobre Craft — el mismo filtro de entrega gobernado detrás de todo lo que hacemos. Seguro, bien diseñado y confiable, porque el futuro de un estudiante no es un lugar para escatimar esfuerzos.</span>
+        </p>
+        <a href="craft.html"><span class="en">See what Craft means</span><span class="es">Mira qué significa Craft</span> <i class="fa-solid fa-arrow-right arrow"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EARLY ACCESS CTA ===================== -->
+<section class="section" id="access">
+  <div class="container">
+    <div class="access reveal">
+      <div class="access-card">
+        <div class="aglow"></div>
+        <div class="inner">
+          <span class="eyebrow is-ghost">
+            <span class="en">Building now · Get early access</span>
+            <span class="es">Construyendo ahora · Obtener acceso anticipado</span>
+          </span>
+          <h2>
+            <span class="en">Be one of the first students Catch guides.</span>
+            <span class="es">Sé uno de los primeros estudiantes guiados por Catch.</span>
+          </h2>
+          <p>
+            <span class="en">Catch is being built now, starting in Colombia. Join early access if you're a student chasing a US scholarship — or a school, mentor, or partner who wants to bring Catch to the students you serve.</span>
+            <span class="es">Catch se está construyendo ahora, comenzando en Colombia. Únete al acceso anticipado si eres un estudiante que busca una beca en EE. UU. — o una escuela, mentor o socio que quiera llevar Catch a los estudiantes a los que sirve.</span>
+          </p>
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn btn-emerald btn-lg" href="mailto:ventas@faimly-t.com?subject=Catch%20early%20access%20%E2%80%94%20student">
+              <span class="en">I'm a student</span><span class="es">Soy estudiante</span> <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+            <a class="btn btn-ghost-light btn-lg" href="mailto:ventas@faimly-t.com?subject=Catch%20partnership">
+              <span class="en">Bring Catch to my students</span><span class="es">Llevar Catch a mis estudiantes</span>
+            </a>
+          </div>
+          <div class="access-note">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="en">Starting in Colombia &nbsp;·&nbsp; expanding across LatAm &nbsp;·&nbsp;</span>
+            <span class="es">Comenzando en Colombia &nbsp;·&nbsp; expandiéndose por LatAm &nbsp;·&nbsp;</span>
+            <i class="fa-solid fa-language"></i>
+            <span> Español &amp; English</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" id="contact">
+  <div class="container wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+        <p>
+          <span class="en">AI-powered engineering for a world that's building more than ever before.</span>
+          <span class="es">Ingeniería potenciada por IA para un mundo que construye más que nunca.</span>
+        </p>
+        <div class="footer-contact"><i class="fa-solid fa-envelope"></i> <a href="mailto:ventas@faimly-t.com">ventas@faimly-t.com</a></div>
+      </div>
+      <div class="footer-grid-nav" style="display:contents;">
+        <div class="footer-col">
+          <h5><span class="en">Products</span><span class="es">Productos</span></h5>
+          <ul>
+            <li><a href="craft.html">Craft</a></li>
+            <li><a href="codebrains.html">CODE Brains</a></li>
+            <li><a href="javascript:void(0)" data-coming-soon="Clara">Clara</a></li>
+            <li><a href="javascript:void(0)" data-coming-soon="Catch">Catch</a></li>
+            <li><a href="portal.html">Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5><span class="en">Catch</span><span class="es">Catch</span></h5>
+          <ul>
+            <li><a href="#problem"><span class="en">The gap</span><span class="es">La brecha</span></a></li>
+            <li><a href="#how"><span class="en">How it works</span><span class="es">Cómo funciona</span></a></li>
+            <li><a href="#journey"><span class="en">The journey</span><span class="es">El viaje</span></a></li>
+            <li><a href="#access"><span class="en">Early access</span><span class="es">Acceso anticipado</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5><span class="en">Get in touch</span><span class="es">Contacto</span></h5>
+          <ul>
+            <li><a href="mailto:ventas@faimly-t.com"><span class="en">Talk to us</span><span class="es">Hablemos</span></a></li>
+            <li><a href="mailto:ventas@faimly-t.com?subject=Catch%20partnership"><span class="en">Become a partner</span><span class="es">Conviértete en socio</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>
+        <span class="en">© 2026 Faimly-T. AI-powered engineering.</span>
+        <span class="es">© 2026 Faimly-T. Ingeniería potenciada por IA.</span>
+      </span>
+      <span>
+        <span class="en">US · LatAm · Europe horizon</span>
+        <span class="es">Horizonte EE. UU. · LatAm · Europa</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="redesign.js"></script>
+<script>
+  (function(){
+    var KEY='ft-portal-lang';
+    var saved = localStorage.getItem(KEY) || 'en';
+    function set(lang){
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang);
+      });
+      localStorage.setItem(KEY, lang);
+      window.dispatchEvent(new CustomEvent('lang-changed', { detail: lang }));
+    }
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.addEventListener('click', function(){ set(b.getAttribute('data-lang-btn')); });
+    });
+    set(saved);
+  })();
+</script>
+</body>
+</html>

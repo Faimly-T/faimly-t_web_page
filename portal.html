@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faimly-T Portal — Consultancy &amp; Training</title>
+<link rel="stylesheet" href="styles.css?v=1.0.1" />
+<link rel="stylesheet" href="redesign.css?v=1.0.1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  /* Bilingual: body[data-lang] toggles .en / .es spans */
+  body[data-lang="en"] .es { display: none !important; }
+  body[data-lang="es"] .en { display: none !important; }
+  .lang-toggle { display: inline-flex; border: 1px solid var(--color-border); border-radius: var(--radius-pill); overflow: hidden; background: #fff; }
+  .lang-toggle button { font-family: var(--font-title); font-weight: 600; font-size: 0.8rem; padding: 0.45rem 0.9rem; border: none; background: transparent; color: var(--color-text-light); cursor: pointer; transition: var(--transition-smooth); }
+  .lang-toggle button.active { background: var(--color-primary); color: #fff; }
+
+  .portal-hero { padding: 96px 0 0; }
+  .portal-hero .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  .portal-hero .hero-art { display:flex; justify-content:center; }
+  .portal-hero .hero-art img { max-height: 380px; filter: drop-shadow(0 30px 50px rgba(0,24,144,0.12)); }
+  @media (max-width:1024px){ .portal-hero .hero-grid { grid-template-columns: 1fr; } .portal-hero .hero-art { order:-1; } .portal-hero .hero-art img { max-height: 240px; } }
+
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pillar { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 2.1rem; transition: var(--transition-smooth); }
+  .pillar:hover { transform: var(--lift-card); box-shadow: var(--shadow-lg); border-color: var(--color-border-hover); }
+  .pillar .ic { width: 54px; height: 54px; border-radius: var(--radius-md); background: var(--color-primary-glow); display:flex; align-items:center; justify-content:center; color: var(--color-primary); font-size: 1.3rem; margin-bottom: 1.2rem; }
+  .pillar h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+  .pillar p { font-size: 0.92rem; }
+  .pillar ul { list-style: none; margin-top: 1rem; display:flex; flex-direction:column; gap:0.55rem; }
+  .pillar li { font-size: 0.86rem; display:flex; gap:0.55rem; color: var(--color-text-muted); }
+  .pillar li i { color: var(--ft-cyan-600); margin-top: 0.25rem; font-size: 0.8rem; }
+  @media (max-width:900px){ .pillar-grid { grid-template-columns: 1fr; } }
+
+  .soon-card { background: linear-gradient(160deg,#001255,#000a3d); color: rgba(255,255,255,0.85); border-radius: var(--radius-card); padding: 3rem; position: relative; overflow: hidden; text-align:center; }
+  .soon-card h3 { color:#fff; font-size: 1.7rem; margin-bottom: 0.8rem; }
+  .soon-card p { max-width: 560px; margin: 0 auto 1.6rem; }
+  .soon-glow { position:absolute; inset:0; background: radial-gradient(50% 80% at 50% 0%, rgba(0,185,255,0.22), transparent 70%); }
+</style>
+</head>
+<body data-lang="en">
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+    <ul class="nav-links">
+      <li><a href="#pillars"><span class="en">What lives here</span><span class="es">Qué encontrarás</span></a></li>
+      <li><a href="#process"><span class="en">The process</span><span class="es">El proceso</span></a></li>
+      <li><a href="#wiki"><span class="en">Knowledge</span><span class="es">Conocimiento</span></a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en" class="active">EN</button>
+        <button data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero portal-hero ft-dot-grid" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow is-cyan"><span class="en">The Portal · Consultancy &amp; Training</span><span class="es">El Portal · Consultoría y Formación</span></span>
+        <h1 style="margin-top:1.2rem;">
+          <span class="en">Where we share how we think about AI.</span>
+          <span class="es">Donde compartimos cómo pensamos sobre la IA.</span>
+        </h1>
+        <p class="sub">
+          <span class="en">Consultancy, training, frameworks, and analysis — the practice behind the products.</span>
+          <span class="es">Consultoría, formación, frameworks y análisis — la práctica detrás de los productos.</span>
+        </p>
+        <p class="lead">
+          <span class="en">Real AI fluency isn't knowing what ChatGPT does. It's making AI part of how your people design, build, review, and ship. The Portal is where we teach that, and where we publish our thinking on AI technologies and techniques.</span>
+          <span class="es">La verdadera fluidez en IA no es saber qué hace ChatGPT. Es lograr que la IA forme parte de cómo tu equipo diseña, construye, revisa y entrega. El Portal es donde lo enseñamos y donde publicamos nuestro análisis sobre tecnologías y técnicas de IA.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#pillars"><span class="en">Explore the Portal</span><span class="es">Explorar el Portal</span> <i class="fa-solid fa-arrow-right arrow"></i></a>
+          <a class="btn btn-outline btn-lg" href="mailto:ventas@faimly-t.com"><span class="en">Book a session</span><span class="es">Agenda una sesión</span></a>
+        </div>
+        <div class="hero-note"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> <span class="en">This line is taking shape — here's the direction we're building toward.</span><span class="es">Esta línea está tomando forma —esta es la dirección hacia la que avanzamos.</span></div>
+      </div>
+      <div class="hero-art"><img src="assets/illustrations/tree-2.png" alt="Faimly-T knowledge tree" /></div>
+    </div>
+  </div>
+</header>
+
+<!-- PILLARS -->
+<section class="section" id="pillars">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow"><span class="en">What lives here</span><span class="es">Qué encontrarás</span></span>
+      <h2><span class="en">Three ways the Portal makes your team more capable.</span><span class="es">Tres formas en que el Portal hace a tu equipo más capaz.</span></h2>
+    </div>
+    <div class="pillar-grid reveal">
+      <div class="pillar">
+        <div class="ic"><i class="fa-solid fa-compass-drafting"></i></div>
+        <h3><span class="en">AI Architecture &amp; Consultancy</span><span class="es">Arquitectura y Consultoría de IA</span></h3>
+        <p><span class="en">Design the AI system your team can actually build on — strategy, system design, and implementation roadmaps for companies that want to get it right the first time.</span><span class="es">Diseña el sistema de IA sobre el que tu equipo realmente pueda construir — estrategia, diseño de sistemas y hojas de ruta de implementación para empresas que quieren hacerlo bien desde el principio.</span></p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i><span class="en">AI system &amp; architecture design</span><span class="es">Diseño de sistemas y arquitectura de IA</span></li>
+          <li><i class="fa-solid fa-check"></i><span class="en">Strategy &amp; implementation roadmaps</span><span class="es">Estrategia y hojas de ruta de implementación</span></li>
+          <li><i class="fa-solid fa-check"></i><span class="en">Clean DDD &amp; multi-agent guidance</span><span class="es">Guía en Clean DDD y multi-agente</span></li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="ic"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3><span class="en">AI Adoption Training</span><span class="es">Formación en Adopción de IA</span></h3>
+        <p><span class="en">Turn your team into AI-native professionals — not just AI-curious ones. Practical, role-specific programs built to stick, from individual developers to entire organizations.</span><span class="es">Convierte a tu equipo en profesionales AI-native —no solo en curiosos de la IA. Programas prácticos y específicos por rol, diseñados para perdurar, desde desarrolladores individuales hasta organizaciones completas.</span></p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i><span class="en">Role-specific, hands-on workshops</span><span class="es">Talleres prácticos por rol</span></li>
+          <li><i class="fa-solid fa-check"></i><span class="en">Design, build, review &amp; ship with AI</span><span class="es">Diseñar, construir, revisar y entregar con IA</span></li>
+          <li><i class="fa-solid fa-check"></i><span class="en">Team &amp; organization-wide tracks</span><span class="es">Rutas para equipos y toda la organización</span></li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="ic"><i class="fa-solid fa-book-open-reader"></i></div>
+        <h3><span class="en">Frameworks &amp; Analysis</span><span class="es">Frameworks y Análisis</span></h3>
+        <p><span class="en">A living library of our frameworks, techniques, and analysis of AI technologies — the ideas we use internally, shared so your team can learn how we think.</span><span class="es">Una biblioteca viva de nuestros frameworks, técnicas y análisis sobre tecnologías de IA —las ideas que usamos internamente, compartidas para que tu equipo conozca nuestra forma de pensar.</span></p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i><span class="en">Practical frameworks &amp; playbooks</span><span class="es">Frameworks y playbooks prácticos</span></li>
+          <li><i class="fa-solid fa-check"></i><span class="en">Technique deep-dives &amp; analysis</span><span class="es">Análisis y profundización en técnicas</span></li>
+          <li><i class="fa-solid fa-check"></i><span class="en">A shared knowledge wiki</span><span class="es">Una wiki de conocimiento compartido</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section--alt" id="process">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow is-green"><span class="en">How it works</span><span class="es">Cómo funciona</span></span>
+      <h2><span class="en">A process that turns understanding into capability.</span><span class="es">Un proceso que convierte el entendimiento en capacidad.</span></h2>
+    </div>
+    <div class="arc reveal">
+      <div class="arc-step"><div class="step-n">01</div><h4><span class="en">Diagnose</span><span class="es">Diagnóstico</span></h4><p><span class="en">We map where your team and systems are today — and where AI fluency would change the most.</span><span class="es">Mapeamos dónde están hoy tu equipo y tus sistemas — y dónde la fluidez en IA generaría mayor impacto.</span></p></div>
+      <div class="arc-step"><div class="step-n">02</div><h4><span class="en">Design</span><span class="es">Diseño</span></h4><p><span class="en">We design the architecture, the program, or the framework that fits your context — not a generic template.</span><span class="es">Diseñamos la arquitectura, el programa o el framework que se ajusta a tu contexto — no una plantilla genérica.</span></p></div>
+      <div class="arc-step"><div class="step-n">03</div><h4><span class="en">Enable</span><span class="es">Habilitar</span></h4><p><span class="en">We train your people hands-on, in the tools and the judgment that make AI part of how they actually work.</span><span class="es">Formamos a tu gente de forma práctica, en las herramientas y el criterio que hacen de la IA parte de su trabajo real.</span></p></div>
+      <div class="arc-step"><div class="step-n">04</div><h4><span class="en">Compound</span><span class="es">Multiplicar</span></h4><p><span class="en">Frameworks, analysis, and our shared wiki keep the capability growing long after the engagement.</span><span class="es">Frameworks, análisis y nuestra wiki compartida mantienen la capacidad creciendo mucho después del proyecto.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WIKI / SOON -->
+<section class="section" id="wiki">
+  <div class="container wide">
+    <div class="soon-card reveal">
+      <div class="soon-glow"></div>
+      <div style="position:relative;z-index:2;">
+        <span class="eyebrow is-ghost"><span class="en">Coming soon</span><span class="es">Próximamente</span></span>
+        <h3 style="margin-top:1rem;"><span class="en">A living knowledge base, open to our community.</span><span class="es">Una base de conocimiento viva, abierta a nuestra comunidad.</span></h3>
+        <p><span class="en">We're building the Portal into a wiki of frameworks, technique breakdowns, and analysis of AI technologies — written by us, for the people who want to think the way we think. Want early access?</span><span class="es">Estamos construyendo el Portal como una wiki de frameworks, desglose de técnicas y análisis de tecnologías de IA — escrita por nosotros, para quienes quieren pensar como nosotros. ¿Quieres acceso anticipado?</span></p>
+        <a class="btn btn-cyan btn-lg" href="mailto:ventas@faimly-t.com?subject=Portal%20early%20access"><span class="en">Request early access</span><span class="es">Solicitar acceso anticipado</span> <i class="fa-solid fa-arrow-right arrow"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container wide">
+    <div class="footer-grid" style="border-top:none;padding-top:0;">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><img src="assets/logo-icon.png" alt="Faimly-T" /><span>Faimly-T</span></a>
+        <p><span class="en">AI-powered engineering for a world that's building more than ever before.</span><span class="es">Ingeniería potenciada por IA para un mundo que construye más que nunca.</span></p>
+        <div class="footer-contact"><i class="fa-solid fa-envelope"></i> <a href="mailto:ventas@faimly-t.com">ventas@faimly-t.com</a></div>
+      </div>
+      <div class="footer-col"><h5><span class="en">Portal</span><span class="es">Portal</span></h5><ul><li><a href="#pillars"><span class="en">Consultancy</span><span class="es">Consultoría</span></a></li><li><a href="#pillars"><span class="en">Training</span><span class="es">Formación</span></a></li><li><a href="#wiki"><span class="en">Knowledge wiki</span><span class="es">Wiki de conocimiento</span></a></li></ul></div>
+      <div class="footer-col">
+        <h5><span class="en">Products</span><span class="es">Productos</span></h5>
+        <ul>
+          <li><a href="craft.html">Craft</a></li>
+          <li><a href="codebrains.html">CODE Brains</a></li>
+          <li><a href="javascript:void(0)" data-coming-soon="Clara">Clara</a></li>
+          <li><a href="javascript:void(0)" data-coming-soon="Catch">Catch</a></li>
+        </ul>
+      </div>
+      <div class="footer-col"><h5><span class="en">Get in touch</span><span class="es">Contacto</span></h5><ul><li><a href="mailto:ventas@faimly-t.com"><span class="en">Talk to us</span><span class="es">Hablemos</span></a></li><li><a href="mailto:ventas@faimly-t.com?subject=Training"><span class="en">Book training</span><span class="es">Agenda tu formación</span></a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Faimly-T.</span><span>US · LatAm · Europe horizon</span></div>
+  </div>
+</footer>
+
+<script src="redesign.js"></script>
+<script>
+  (function(){
+    var KEY='ft-portal-lang';
+    var saved = localStorage.getItem(KEY) || 'en';
+    function set(lang){
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang-btn')===lang);
+      });
+      localStorage.setItem(KEY, lang);
+    }
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.addEventListener('click', function(){ set(b.getAttribute('data-lang-btn')); });
+    });
+    set(saved);
+  })();
+</script>
+</body>
+</html>

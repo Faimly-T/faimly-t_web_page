@@ -1,114 +1,102 @@
-/* --------------------------------------------------------------------------
-   FAIMLY-T WEB PAGE - INTERACTIONS & FORM SUBMISSION SCRIPT
-   Handles mobile menu toggling, interactive FAQ accordions, and custom form submission
-   -------------------------------------------------------------------------- */
+/* Faimly-T — site interactions (vanilla, no dependencies) */
+(function () {
+  'use strict';
 
-document.addEventListener("DOMContentLoaded", () => {
-  const leadForm = document.getElementById("lead-form");
-  const formFeedback = document.getElementById("form-feedback");
-  const mobileToggle = document.querySelector(".mobile-nav-toggle");
-  const navLinks = document.querySelector(".nav-links");
-
-  // Mobile menu toggle
-  if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      const icon = mobileToggle.querySelector("i");
-      if (icon) {
-        icon.classList.toggle("fa-bars");
-        icon.classList.toggle("fa-xmark");
-      }
-    });
+  /* --- FAQ accordion (single-open) --- */
+  var items = document.querySelectorAll('.faq-item');
+  function setPanel(item, open) {
+    var panel = item.querySelector('.faq-panel');
+    if (open) {
+      item.classList.add('active');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    } else {
+      item.classList.remove('active');
+      panel.style.maxHeight = null;
+    }
   }
-
-  // FAQ Accordion interaction
-  const faqItems = document.querySelectorAll(".faq-item");
-  faqItems.forEach((item) => {
-    const trigger = item.querySelector(".faq-trigger");
-    const panel = item.querySelector(".faq-panel");
-
-    if (trigger && panel) {
-      trigger.addEventListener("click", () => {
-        const isActive = item.classList.contains("active");
-
-        // Close all other panels to maintain single-open accordion behavior
-        faqItems.forEach((otherItem) => {
-          if (otherItem !== item) {
-            otherItem.classList.remove("active");
-            const otherPanel = otherItem.querySelector(".faq-panel");
-            if (otherPanel) {
-              otherPanel.style.maxHeight = "0px";
-            }
-          }
-        });
-
-        // Toggle the clicked panel
-        if (isActive) {
-          item.classList.remove("active");
-          panel.style.maxHeight = "0px";
-        } else {
-          item.classList.add("active");
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-      });
+  items.forEach(function (item) {
+    var trigger = item.querySelector('.faq-trigger');
+    trigger.addEventListener('click', function () {
+      var isOpen = item.classList.contains('active');
+      items.forEach(function (other) { if (other !== item) setPanel(other, false); });
+      setPanel(item, !isOpen);
+    });
+    // open the one pre-marked active
+    if (item.classList.contains('active')) {
+      requestAnimationFrame(function () { setPanel(item, true); });
     }
   });
+  // keep open panel sized correctly on resize
+  window.addEventListener('resize', function () {
+    var active = document.querySelector('.faq-item.active .faq-panel');
+    if (active) active.style.maxHeight = active.scrollHeight + 'px';
+  });
 
-  // Automatically expand the default active FAQ item on load
-  const defaultActive = document.querySelector(".faq-item.active");
-  if (defaultActive) {
-    const panel = defaultActive.querySelector(".faq-panel");
-    if (panel) {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  }
+  /* --- Smooth anchor scroll with fixed-nav offset --- */
+  var NAV_H = 76;
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      var el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      var y = id === '#top' ? 0 : el.getBoundingClientRect().top + window.pageYOffset - NAV_H;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
 
-  // Intercept the form submission to provide a beautiful custom success window
-  if (leadForm) {
-    leadForm.addEventListener("submit", async (e) => {
-      e.preventDefault(); // Stop standard redirect page refresh
-      
-      const submitBtn = leadForm.querySelector("button[type='submit']");
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending details...";
-
-      // Get values from form
-      const formData = new FormData(leadForm);
-
-      try {
-        const response = await fetch(leadForm.action, {
-          method: "POST",
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          // Fade out form and display success UI
-          leadForm.style.transition = "opacity 0.4s ease";
-          leadForm.style.opacity = "0";
-          setTimeout(() => {
-            leadForm.style.display = "none";
-            formFeedback.style.display = "block";
-            formFeedback.style.opacity = "0";
-            formFeedback.style.transition = "opacity 0.4s ease";
-            setTimeout(() => {
-              formFeedback.style.opacity = "1";
-            }, 50);
-          }, 400);
-        } else {
-          alert("Submission could not be sent. Please email us directly at info@faimly-t.com.");
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-        }
-      } catch (err) {
-        console.error("Form error:", err);
-        alert("An error occurred. Please contact info@faimly-t.com directly.");
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
+  /* --- Contact form (Web3Forms AJAX submit) --- */
+  var form = document.getElementById('contactForm');
+  var container = document.getElementById('formContainer');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      var key = form.querySelector('[name="access_key"]').value;
+      // If no real key is configured yet, just show the success state (demo mode).
+      if (!key || key === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        e.preventDefault();
+        container.classList.add('form-sent');
+        return;
       }
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var original = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function () { container.classList.add('form-sent'); })
+        .catch(function () {
+          btn.textContent = original;
+          btn.disabled = false;
+          alert('Something went wrong. Please email info@faimly-t.com directly.');
+        });
     });
   }
-});
+
+  /* --- Mobile navigation toggle --- */
+  var toggle = document.querySelector('.mobile-nav-toggle');
+  var navbar = document.querySelector('.navbar');
+  if (toggle && navbar) {
+    toggle.addEventListener('click', function () {
+      navbar.classList.toggle('mobile-active');
+      var icon = toggle.querySelector('i');
+      if (icon) {
+        if (navbar.classList.contains('mobile-active')) {
+          icon.className = 'fa-solid fa-xmark';
+        } else {
+          icon.className = 'fa-solid fa-bars';
+        }
+      }
+    });
+    
+    // Close mobile menu when clicking a link
+    navbar.querySelectorAll('.nav-links a, .nav-cta a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navbar.classList.remove('mobile-active');
+        var icon = toggle.querySelector('i');
+        if (icon) icon.className = 'fa-solid fa-bars';
+      });
+    });
+  }
+})();

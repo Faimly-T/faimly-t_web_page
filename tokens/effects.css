@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Faimly-T — Effects: radii, shadows, motion, surface textures
+   --------------------------------------------------------------------------
+   The brand reads "premium light SaaS": generous 20px card radii, pill
+   buttons & nav, and feather-soft low-opacity shadows (never heavy/dark).
+   Motion is calm — one smooth 0.25s cubic-bezier easing, a 1px hover lift,
+   no bounces. The signature backdrop is a faint slate dot-grid.
+   ========================================================================== */
+
+:root {
+  /* ---- Corner radii ------------------------------------------------- */
+  --radius-sm: 8px;        /* inputs, small chips        */
+  --radius-md: 12px;       /* inner widgets              */
+  --radius-card: 20px;     /* cards, panels, dialogs     */
+  --radius-pill: 9999px;   /* buttons, nav, badges       */
+  /* legacy aliases */
+  --border-radius-sm: var(--radius-sm);
+  --border-radius-card: var(--radius-card);
+  --border-radius-pill: var(--radius-pill);
+
+  /* ---- Soft elevation (low-opacity, cool) --------------------------- */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  /* tinted brand glow for primary buttons */
+  --shadow-primary: 0 4px 10px rgba(52, 109, 219, 0.2);
+  --shadow-primary-hover: 0 6px 14px rgba(52, 109, 219, 0.3);
+
+  /* ---- Motion ------------------------------------------------------- */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);   /* @kind other */
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --lift-hover: translateY(-1px);   /* @kind other */
+  --lift-card: translateY(-4px);    /* @kind other */
+}
+
+/* --------------------------------------------------------------------------
+   Signature dot-grid backdrop. Apply .ft-dot-grid to any positioned element
+   (hero, header, info card) for the faint slate dot texture.
+   -------------------------------------------------------------------------- */
+.ft-dot-grid { position: relative; }
+.ft-dot-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--ft-slate-300) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+}

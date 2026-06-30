@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Faimly-T — Color Tokens
+   --------------------------------------------------------------------------
+   The OFFICIAL Faimly-T palette (from the brand LookBook): a deep NAVY
+   (#001890) as the dominant brand color, energized by a vivid CYAN (#00B9FF)
+   accent and light-cyan highlights — the two colors of the brain-tree
+   logomark. Set over cool slate neutrals. The live marketing site additionally
+   uses a lighter royal "web blue" (#346DDB) as its UI tint; it's kept below as
+   --ft-web-blue and drives --color-primary so the website UI kit stays faithful.
+   Base values first, then semantic aliases.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand: NAVY (primary brand color) ----------------------------- */
+  --ft-navy: #001890;          /* Official brand navy — dominant brand color  */
+  --ft-navy-700: #00126b;      /* Deeper navy / pressed                       */
+  --ft-navy-900: #000a3d;      /* Near-black navy ink (illustrations)         */
+  --ft-navy-050: #e8eaf6;      /* Navy tint surface                          */
+
+  /* ---- Brand: CYAN (accent) ----------------------------------------- */
+  --ft-cyan: #00b9ff;          /* Official accent cyan — logomark fill, energy */
+  --ft-cyan-600: #00a2e0;      /* Pressed / deeper cyan                       */
+  --ft-cyan-300: #78d8f8;      /* Light cyan highlight (logomark gradient)    */
+  --ft-cyan-050: #e6f8ff;      /* Cyan tint surface                          */
+
+  /* ---- Web blue (live marketing-site UI tint) ----------------------- */
+  --ft-web-blue: #346ddb;      /* Live-site primary (royal blue)             */
+  --ft-blue-700: #2354b5;      /* Web-blue hover / pressed                   */
+  --ft-blue-600: #346ddb;      /* Alias of --ft-web-blue                     */
+  --ft-blue-500: #3b82f6;      /* Bright accent blue                         */
+  --ft-blue-glow: rgba(52, 109, 219, 0.08);  /* Tinted primary surface       */
+  --ft-blue-glow-ring: rgba(52, 109, 219, 0.12); /* Focus ring               */
+
+  /* ---- Slate neutrals ------------------------------------------------ */
+  --ft-white: #ffffff;
+  --ft-slate-50:  #f8fafc;     /* App background                             */
+  --ft-slate-100: #f1f5f9;     /* Alt / sunken background                    */
+  --ft-slate-200: #e2e8f0;     /* Hairline borders                          */
+  --ft-slate-300: #cbd5e1;     /* Border hover / dot-grid dots              */
+  --ft-slate-500: #64748b;     /* Tertiary text                             */
+  --ft-slate-600: #475569;     /* Body text                                 */
+  --ft-slate-900: #0f172a;     /* Headings / high-contrast ink              */
+
+  /* ---- Dark surfaces (hero / case backdrops, deep-blue tech imagery) - */
+  --ft-ink-900: #000a3d;       /* Near-black navy (matches illustrations)    */
+  --ft-ink-800: #001255;       /* Dark navy panel                           */
+
+  /* ---- Status ------------------------------------------------------- */
+  --ft-success: #10b981;
+  --ft-warning: #f59e0b;
+  --ft-danger:  #ef4444;
+
+  /* ======================================================================
+     SEMANTIC ALIASES  — reach for these in product & marketing work
+     ====================================================================== */
+  --color-bg:           var(--ft-slate-50);
+  --color-bg-alt:       var(--ft-slate-100);
+  --color-bg-card:      var(--ft-white);
+  --color-border:       var(--ft-slate-200);
+  --color-border-hover: var(--ft-slate-300);
+
+  --color-primary:        var(--ft-blue-600);
+  --color-primary-hover:  var(--ft-blue-700);
+  --color-primary-glow:   var(--ft-blue-glow);
+  --color-secondary:      var(--ft-slate-900);
+  --color-secondary-hover: #1e293b;
+
+  --color-text-main:   var(--ft-slate-900);
+  --color-text-muted:  var(--ft-slate-600);
+  --color-text-light:  var(--ft-slate-500);
+  --color-accent-blue: var(--ft-blue-500);
+
+  /* Official brand anchors — reach for these in brand-forward work */
+  --color-brand:         var(--ft-navy);   /* primary brand color */
+  --color-brand-accent:  var(--ft-cyan);   /* accent / energy     */
+  --color-brand-navy:    var(--ft-navy);
+
+  --color-success: var(--ft-success);
+}
